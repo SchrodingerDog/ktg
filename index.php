@@ -28,7 +28,8 @@
     }
     footer{
       text-align: center;
-      background-color: #1F1F1F;
+      color: #606060;
+      background: #C0C0C0;
     }
     #row{
       padding-bottom: 15px;
