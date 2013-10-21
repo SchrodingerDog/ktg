@@ -91,7 +91,10 @@
             echo    $row['tresc'].'<br>';
             echo  '</div>';
             echo  '<div class="panel-footer">';
-            echo    '<div class = "created"><i>'.$row['created'].'</i></div><br>';
+            if ($_COOKIE['adminMode']==' checked') {
+              echo $row['id'];
+            }
+            echo    '<div class = "created"><i>'.$row['created'].'</i></div>';
             echo  '</div>';//footer
             echo  '</div>';//panel panel-default
             echo  '</div>';//col
