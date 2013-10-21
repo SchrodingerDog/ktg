@@ -72,7 +72,7 @@
         // echo 'Ups, cos poszlo nie tak ';
       }
 
-      $posts = $pdo->query('SELECT * FROM posts');
+      $posts = $pdo->query('SELECT * FROM posts ORDER BY id DESC');
 
       if(!is_null($posts)){
         foreach($posts->fetchAll() as $row)
@@ -91,8 +91,10 @@
             echo    $row['tresc'].'<br>';
             echo  '</div>';
             echo  '<div class="panel-footer">';
-            if ($_COOKIE['adminMode']==' checked') {
-              echo $row['id'];
+            if (isset($_COOKIE['adminMode'])) {
+              if ($_COOKIE['adminMode']==' checked') {
+                echo $row['id'].' (ID potrzebne do usuwania i edycji)';
+              }
             }
             echo    '<div class = "created"><i>'.$row['created'].'</i></div>';
             echo  '</div>';//footer

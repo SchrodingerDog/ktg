@@ -5,7 +5,7 @@ if(isset($_COOKIE['adminMode'])){
     setcookie('adminMode', ' ');
 }
 
-if(isset($_COOKIE['adminMode']) and $_COOKIE['adminMode']!=''){
+if(isset($_COOKIE['adminMode']) and $_COOKIE['adminMode']==' checked'){
     echo 'Tryb admina wlaczony<br>';
 }
 
@@ -97,8 +97,7 @@ function usunPost($id){
 }
 
 function adminMode(){
-    setcookie('adminMode', ' checked', time()+600);    
-    echo "wlaczono tryb Admina";
+    setcookie('adminMode', ' checked', time()+600);
 
 }
 
@@ -112,7 +111,9 @@ Tresc postu: <textarea name="tresc"></textarea><br>
 <hr>
 <input type="checkbox" name="adminMode" id="checkbox"
 <?php
-    echo $_COOKIE['adminMode'];
+    if (isset($_COOKIE['adminMode'])) {
+        echo $_COOKIE['adminMode'];
+    }
 ?> 
 />
 
