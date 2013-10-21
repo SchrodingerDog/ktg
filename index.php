@@ -38,6 +38,10 @@
       text-align: right;
 
     }
+    .page-header{
+      margin-bottom: 5px;
+      padding-bottom: 0;
+    }
     
 
 </style>
@@ -73,17 +77,25 @@
       if(!is_null($posts)){
         foreach($posts->fetchAll() as $row)
         {
-          echo '<div id = "row">';
+            echo '<div id = "row">';
             if ($row['id']%2==1) {
-              echo '<div class="col-md-4">';
+              echo '<div class="col-md-6">';
             }else{
-              echo '<div class="col-md-4 col-md-offset-8">';
+              echo '<div class="col-md-6 col-md-offset-6">';
             }
-              echo $row['tytul'].'<br>';
-              echo $row['tresc'].'<br>';
-              echo '<div class = "created"><i>'.$row['created'].'</i></div><br>';
-            echo '</div>';
-          echo '</div>';
+            echo '<div class="panel panel-default">';
+            echo  '<div class="panel-heading">';
+            echo   '<h3 class="panel-title">'.$row['tytul'].'</h3>';
+            echo  '</div>';
+            echo  '<div class="panel-body">';
+            echo    $row['tresc'].'<br>';
+            echo  '</div>';
+            echo  '<div class="panel-footer">';
+            echo    '<div class = "created"><i>'.$row['created'].'</i></div><br>';
+            echo  '</div>';//footer
+            echo  '</div>';//panel panel-default
+            echo  '</div>';//col
+            echo '</div>';//row
         }
       }
       
