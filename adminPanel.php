@@ -29,7 +29,7 @@ function dodajPost($tytul, $tresc){
         $pdo = new PDO('mysql:host=localhost;dbname=ktg;charset=utf8', 'root', '');
         echo 'Połączono z bazą';
       }catch(PDOException $e){
-        echo 'Ups, cos poszlo nie tak ';
+        echo 'Ups cos poszlo nie tak ';
     }
     $zapytanie = $pdo->prepare('INSERT INTO posts (tytul, tresc, created) VALUES (?, ?, CURRENT_TIMESTAMP)');
     $wynik = $zapytanie->execute(array($tytul,$tresc));
