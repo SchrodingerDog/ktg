@@ -75,8 +75,7 @@
       $posts = $pdo->query('SELECT * FROM posts ORDER BY id DESC');
 
       if(!is_null($posts)){
-        foreach($posts->fetchAll() as $row)
-        {
+        foreach($posts->fetchAll() as $row){
             echo '<div id = "row">';
             if ($row['id']%2==1) {
               echo '<div class="col-md-6">';
