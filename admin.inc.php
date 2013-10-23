@@ -67,12 +67,15 @@ function adminMode(){
 function dodajCzlonka($zdjecie, $imie, $nazwisko, $opis){
     try{
         $pdo = new PDO('mysql:host=localhost;dbname=ktg;charset=utf8', 'root', '');
-        echo 'Połaczono z baza';
+        echo 'Połaczono z baza<br>';
       }catch(PDOException $e){
-        die('Ups cos poszlo nie tak ');
+        die('Ups cos poszlo nie tak<br>');
     }
     if(is_uploaded_file($zdjecie['tmp_name'])){
-        copy($zdjecie['tmp_name'], 'member_photos\\'.$zdjecie['name']);
+        if ($zdjecie['size']>(1024*1024)) {
+           die("Plik jest za duży");
+        }
+        move_uploaded_file($zdjecie['tmp_name'], 'member_photos\\'.$zdjecie['name']);
         $file_dir = 'member_photos\\'.$zdjecie['name'];
     }else{
         $file_dir = 'member_photos\blank_user.gif';
