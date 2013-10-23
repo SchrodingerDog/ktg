@@ -4,6 +4,7 @@
 </html>
 <?php
 require 'admin.inc.php';
+echo 'LALALALALA';
 // try{
 //         $pdo = new PDO('mysql:host=localhost;dbname=ktg;charset=utf8', 'root', '');
 //         echo 'Połaczono z baza';
