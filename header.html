@@ -13,8 +13,20 @@
   <!-- Collect the nav links, forms, and other content for toggling -->
   <div class="collapse navbar-collapse navbar-ex1-collapse">
     <ul class="nav navbar-nav">
-      <li class="active"><a href="#">Strona Główna</a></li>
-      <li><a href="#">To my!</a></li>
+      <li 
+      <?php 
+      if($_SERVER['SCRIPT_NAME'] == '/ktg/index.php'){
+        echo 'class="active"';
+      }
+      ?>
+      ><a href="index.php">Strona Główna</a></li>
+      <li
+       <?php 
+      if($_SERVER['SCRIPT_NAME'] == '/ktg/toMy.php'){
+        echo 'class="active"';
+      }
+      ?>
+      ><a href="toMy.php">To my!</a></li>
       <li class="dropdown">
         <a href="#" class="dropdown-toggle" data-toggle="dropdown">Galeria<b class="caret"></b></a>
         <ul class="dropdown-menu">
