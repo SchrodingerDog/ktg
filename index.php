@@ -57,7 +57,7 @@
     
     <div class="container">
       
-      <?php require 'header.html'; ?>
+      <?php require 'header.php'; ?>
 
       <div class="starter-template">
         <h1>Strona Główna</h1>
@@ -90,10 +90,8 @@
             echo    $row['tresc'].'<br>';
             echo  '</div>';
             echo  '<div class="panel-footer">';
-            if (isset($_COOKIE['adminMode'])) {
-              if ($_COOKIE['adminMode']==' checked') {
+            if (isset($_SESSION['login'])) {
                 echo $row['id'].' (ID potrzebne do usuwania i edycji)';
-              }
             }
             echo    '<div class = "created"><i>'.$row['created'].'</i></div>';
             echo  '</div>';//footer

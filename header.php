@@ -39,6 +39,14 @@
         </ul>
       </li>
     </ul>
+    <ul class="nav navbar-nav navbar-right">
+    <?php if(isset($_SESSION['login'])){
+      echo '<li><a href="logout.php"><span class="glyphicon glyphicon-ban-circle"> Logout</span></a></li>';
+      echo '<li><a href="adminPanel.php"><span class="glyphicon glyphicon-cog"> Panel Admina</span></a></li>';
+    }else{
+      echo '<li><a href="login.php"><span class="glyphicon glyphicon-pencil"> Login</span></a></li>';
+    } ?>
+    </ul>
 
     <!-- <ul class="nav navbar-nav navbar-right">
       <li><a href="#">Link</a></li>

@@ -3,6 +3,7 @@
 <head><meta charset="utf-8"></head>
 </html>
 <?php 
+session_start();
 function dodajPost($tytul, $tresc){
     try{
         $pdo = new PDO('mysql:host=localhost;dbname=ktg;charset=utf8', 'root', '');
@@ -59,10 +60,6 @@ function usunPost($id){
     }
 }
 
-function adminMode(){
-    setcookie('adminMode', ' checked', time()+600);
-
-}
 
 function dodajCzlonka($zdjecie, $imie, $nazwisko, $opis){
     try{
@@ -81,9 +78,23 @@ function dodajCzlonka($zdjecie, $imie, $nazwisko, $opis){
         $file_dir = 'member_photos\blank_user.gif';
     }
     
-    
-    $zapytanie = $pdo->prepare('INSERT INTO members (zdjecie, imie, nazwisko, opis) VALUES (?, ?, ?, ?)');
-    $wynik = $zapytanie->execute(array($file_dir, $imie, $nazwisko, $opis));
+    $login = strtolower(substr($imie, 0,3)).strtolower(substr($nazwisko, 0,3)).strlen($imie).strlen($nazwisko);
+    $zapytanie = $pdo->prepare('INSERT INTO members (zdjecie, imie, nazwisko, opis, login) VALUES (?, ?, ?, ?, ?)');
+    $wynik = $zapytanie->execute(array($file_dir, $imie, $nazwisko, $opis, $login));
+    if (is_null($wynik)) {
+        echo 'Ups';
+    }
+}
+function superUser($id){
+    try{
+        $pdo = new PDO('mysql:host=localhost;dbname=ktg;charset=utf8', 'root', '');
+        echo 'Połaczono z baza<br>';
+      }catch(PDOException $e){
+        die('Ups cos poszlo nie tak<br>');
+    }
+    $zapytanie = $pdo->prepare('UPDATE  `members` SET  `super_user` = 1 WHERE id =?');
+    $wynik = $zapytanie->execute(array($id));
+    echo 'Funkcja wykonana';
     if (is_null($wynik)) {
         echo 'Ups';
     }

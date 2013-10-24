@@ -4,7 +4,10 @@
 </html>
 <?php
 require 'admin.inc.php';
-echo 'LALALALALA';
+if(!isset($_SESSION['login'])){
+    echo "Nieładnie, by tu wejść trzeba się zalogować";
+    exit();
+}
 // try{
 //         $pdo = new PDO('mysql:host=localhost;dbname=ktg;charset=utf8', 'root', '');
 //         echo 'Połaczono z baza';
@@ -17,30 +20,11 @@ echo 'LALALALALA';
 //             echo '<img src="'.$row['zdjecie'].'"/>';
 //         }
 //     }
-
-if(isset($_COOKIE['adminMode'])){        
-    echo 'Ciasteczko istnieje<br>';
-}else{
-    setcookie('adminMode', ' ');
-}
-
-if(isset($_COOKIE['adminMode']) and $_COOKIE['adminMode']==' checked'){
-    echo 'Tryb admina wlaczony<br>';
-}
-
 if (!empty($_POST['tresc']) and !empty($_POST['tytul'])) {
 	$tytul = $_POST['tytul'];
 	$tresc = $_POST['tresc'];
 
 	dodajPost($tytul, $tresc);
-}
-
-if (isset($_POST['adminMode'])) {
-    adminMode();
-}
-
-if (!isset($_POST['adminMode'])) {
-    setcookie('adminMode', ' ');
 }
 
 if (!empty($_POST['id_edycja'])) {
@@ -68,6 +52,12 @@ if (!empty($_POST['imie']) and !empty($_POST['nazwisko']) and !empty($_POST['opi
 
 }
 
+if(!empty($_POST['id_super'])){
+    $id = $_POST['id_super'];
+    superUser($id);
+    echo 'Wywolano funkcje';
+}
+
 ?>
 
 <form action = 'adminPanel.php' method="POST" ENCTYPE="multipart/form-data">
@@ -76,21 +66,12 @@ Tytul postu:                <input type="text" name="tytul"><br>
 
 Tresc postu:                <textarea name="tresc"></textarea><br>
 <hr>
-                            <input type="checkbox" name="adminMode" id="checkbox"
-                            <?php
-                                if (isset($_COOKIE['adminMode'])) {
-                                    echo $_COOKIE['adminMode'];
-                                }
-                            ?> 
-                            />
 
-                            <label for="checkbox"> Wlacz tryb Admina<br></label>
-<hr>
 ID postu do edycji (*):     <input type="text" name="id_edycja"><br>
 Tytul postu do edycji(pusty jesli ma zostac bez zmian): 
                             <input type="text" name="tytul_edycja"><br>
 Tresc postu do edycji(pusty jesli ma zostac bez zmian): 
-                            <input type="text" name="tresc_edycja"><br>
+                            <textarea name="tresc_edycja"></textarea><br>
 <hr>
 ID postu do usuniecia (*):  <input type="text" name="id_usun"><br>
 UWAGA! Nie ma potwierdzenia i backupu, wiec trzeba uwazac!
@@ -101,5 +82,10 @@ Imie:                       <input type="text" name="imie"><br>
 Nazwisko:                   <input type="text" name="nazwisko"><br>
 Krotki opis:                <textarea name="opis"></textarea><br>
 <hr>
+<?php if($_SESSION['login']=='kampro512'){
+    echo 'Super user dla uzytkownika o ID <input type="text" name="id_super"><br>';
+    echo '<hr>';
+}?>
+
                             <input type="submit" value="Submit">
 </form>

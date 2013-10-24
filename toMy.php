@@ -57,7 +57,7 @@
     
     <div class="container">
       
-      <?php require 'header.html'; ?>
+      <?php require 'header.php'; ?>
 
       <div class="starter-template">
         <h1>Strona Główna</h1>
@@ -72,7 +72,7 @@
         // echo 'Ups, cos poszlo nie tak ';
       }
 
-      $members = $pdo->query('SELECT * FROM members ORDER BY id DESC');
+      $members = $pdo->query('SELECT * FROM members ORDER BY id');
 
       if(!is_null($members)){
         foreach($members->fetchAll() as $row){
