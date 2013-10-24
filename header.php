@@ -1,4 +1,5 @@
 <?php session_start(); ?>
+
 <nav class="navbar navbar-inverse" role="navigation">
   <!-- Brand and toggle get grouped for better mobile display -->
   <div class="navbar-header">

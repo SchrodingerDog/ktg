@@ -25,6 +25,7 @@
     #container {
       min-height:100%;
       position:relative;
+      
     }
     footer{
       text-align: center;
@@ -42,7 +43,6 @@
       margin-bottom: 5px;
       padding-bottom: 0;
     }
-    
 
 </style>
 
@@ -59,10 +59,7 @@
       
       <?php require 'header.php'; ?>
 
-      <div class="starter-template">
-        <h1>Strona Główna</h1>
-        <p class="lead">Witaj na stronie głównej!</p>
-      </div>
+      
       
       <?php
       try{
