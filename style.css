@@ -1,0 +1,36 @@
+*{
+margin: 0;
+padding: 0;
+}
+
+body{
+  background: url(member_photos/lbpvXmZ.jpg) no-repeat center center fixed; 
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
+#container {
+min-height:100%;
+position:relative;
+}
+
+footer{
+text-align: center;
+color: #606060;
+background: #C0C0C0;
+}
+
+#row{
+padding-bottom: 15px;
+}
+
+.created{
+text-align: right;
+
+}
+.page-header{
+margin-bottom: 5px;
+padding-bottom: 0;
+}

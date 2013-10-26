@@ -13,38 +13,7 @@
     <link href="bootstrap/dist/css/bootstrap.css" rel="stylesheet">
 
     <!-- Custom style -->
-    <style type="text/css">
-    *{
-      margin: 0;
-      padding: 0;
-    }    
-    .starter-template {
-      padding: 40px 15px;
-      text-align: center;
-    }
-    #container {
-      min-height:100%;
-      position:relative;
-    }
-    footer{
-      text-align: center;
-      color: #606060;
-      background: #C0C0C0;
-    }
-    #row{
-      padding-bottom: 15px;
-    }
-    .created{
-      text-align: right;
-
-    }
-    .page-header{
-      margin-bottom: 5px;
-      padding-bottom: 0;
-    }
-    
-
-</style>
+    <link href="style.css" rel="stylesheet">
 
     <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
@@ -58,11 +27,7 @@
     <div class="container">
       
       <?php require 'header.php'; ?>
-
-      <div class="starter-template">
-        <h1>Strona Główna</h1>
-        <p class="lead">Witaj na stronie głównej!</p>
-      </div>
+      
       
       <?php
       try{
@@ -78,7 +43,7 @@
         foreach($members->fetchAll() as $row){
             echo '<div class="row">';
               echo '<div class="col-md-3">';
-                echo '<a href="#" class="thumbnail">';
+                echo '<a class="thumbnail">';
                   echo '<img data-src="holder.js/100%x180" src = "'.$row['zdjecie'].'">';
                 echo '</a>';
               echo '</div>';
@@ -89,7 +54,6 @@
             echo '</div>';
         }
       }
-      
       
       ?>
     </div><!-- /.container -->
