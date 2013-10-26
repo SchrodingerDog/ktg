@@ -4,13 +4,11 @@
 </html>
 <?php 
 session_start();
+function polaczZBaza($host, $dbname, $user, $pass){
+    return $pdo = new PDO('mysql:host='.$host.';dbname='.$dbname.';charset=utf8', $user, $pass);
+}
 function dodajPost($tytul, $tresc){
-    try{
-        $pdo = new PDO('mysql:host=localhost;dbname=ktg;charset=utf8', 'root', '');
-        echo 'Połaczono z baza';
-      }catch(PDOException $e){
-        echo 'Ups cos poszlo nie tak ';
-    }
+    $pdo = polaczZBaza('localhost', 'ktg', 'root', '');
     $zapytanie = $pdo->prepare('INSERT INTO posts (tytul, tresc, created) VALUES (?, ?, CURRENT_TIMESTAMP)');
     $wynik = $zapytanie->execute(array($tytul,$tresc));
     if (is_null($wynik)) {
@@ -19,12 +17,7 @@ function dodajPost($tytul, $tresc){
 }
 
 function edytujPost($id, $tytul, $tresc){
-    try{
-        $pdo = new PDO('mysql:host=localhost;dbname=ktg;charset=utf8', 'root', '');
-        echo 'Połaczono z baza';
-      }catch(PDOException $e){
-        echo 'Ups cos poszlo nie tak ';
-    }
+    $pdo = polaczZBaza('localhost', 'ktg', 'root', '');
     if ($tytul == '') {
         $zapytanie = $pdo->prepare('UPDATE posts SET tresc = ? WHERE id=?');
     }elseif ($tresc == '') {
@@ -47,12 +40,7 @@ function edytujPost($id, $tytul, $tresc){
 }
 
 function usunPost($id){
-    try{
-        $pdo = new PDO('mysql:host=localhost;dbname=ktg;charset=utf8', 'root', '');
-        echo 'Połaczono z baza';
-      }catch(PDOException $e){
-        echo 'Ups cos poszlo nie tak ';
-    }
+    $pdo = polaczZBaza('localhost', 'ktg', 'root', '');
     $zapytanie = $pdo->prepare('DELETE FROM posts WHERE id = ?');
     $wynik = $zapytanie->execute(array($id));
     if (is_null($wynik)) {
@@ -62,12 +50,7 @@ function usunPost($id){
 
 
 function dodajCzlonka($zdjecie, $imie, $nazwisko, $opis){
-    try{
-        $pdo = new PDO('mysql:host=localhost;dbname=ktg;charset=utf8', 'root', '');
-        echo 'Połaczono z baza<br>';
-      }catch(PDOException $e){
-        die('Ups cos poszlo nie tak<br>');
-    }
+    $pdo = polaczZBaza('localhost', 'ktg', 'root', '');
     if(is_uploaded_file($zdjecie['tmp_name'])){
         if ($zdjecie['size']>(1024*1024)) {
            die("Plik jest za duży");
@@ -86,12 +69,7 @@ function dodajCzlonka($zdjecie, $imie, $nazwisko, $opis){
     }
 }
 function superUser($id){
-    try{
-        $pdo = new PDO('mysql:host=localhost;dbname=ktg;charset=utf8', 'root', '');
-        echo 'Połaczono z baza<br>';
-      }catch(PDOException $e){
-        die('Ups cos poszlo nie tak<br>');
-    }
+    $pdo = polaczZBaza('localhost', 'ktg', 'root', '');
     $zapytanie = $pdo->prepare('UPDATE  `members` SET  `super_user` = 1 WHERE id =?');
     $wynik = $zapytanie->execute(array($id));
     echo 'Funkcja wykonana';
