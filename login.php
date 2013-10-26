@@ -34,15 +34,6 @@ function loguj($login, $password){
     		echo 'Nieprawidłowe hasło';
     	}
     }
-    		
-    		// echo $members;
-	    	//
-	     //        if($row['super_user']==1){
-	     //        	$_SESSION['login'] = $login;
-	     //        }else{
-	     //        	echo 'Tylko uzytkownik poziomu super moze sie logowac';
-	     //        }
-	     //    }
 }
 
 

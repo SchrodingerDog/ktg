@@ -15,11 +15,6 @@
     <!-- Custom style -->
     <link href="style.css" rel="stylesheet">
 
-    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!--[if lt IE 9]>
-      <script src="bootstrap/assets/js/html5shiv.js"></script>
-      <script src="bootstrap/assets/js/respond.min.js"></script>
-    <![endif]-->
   </head>
 
   <body>
@@ -41,17 +36,19 @@
 
       if(!is_null($members)){
         foreach($members->fetchAll() as $row){
-            echo '<div class="row">';
-              echo '<div class="col-md-3">';
-                echo '<a class="thumbnail">';
-                  echo '<img data-src="holder.js/100%x180" src = "'.$row['zdjecie'].'">';
-                echo '</a>';
-              echo '</div>';
-              echo '<div class="col-md-3">';
-                  echo $row['nazwisko'].' '.$row['imie'].'<br>';
-                  echo $row['opis'].'<br>';
-              echo '</div>';
+          echo '<div class="row">';
+            echo '<div class="col-md-2">';
+              echo '<img class ="media-object" src = "'.$row['zdjecie'].'">';
             echo '</div>';
+            echo '<div class="panel col-md-3">';
+            echo '<div class="panel-title">';
+              echo $row['nazwisko'].' '.$row['imie'].'<br>';
+            echo '</div>';
+              echo '<div class="panel-body">';
+                echo $row['opis'].'<br>';
+              echo '</div>'; 
+            echo '</div>';
+          echo '</div>';
         }
       }
       
@@ -61,5 +58,6 @@
 
     <script src="bootstrap/assets/js/jquery.js"></script>
     <script src="bootstrap/dist/js/bootstrap.min.js"></script>
+
   </body>
 </html>
