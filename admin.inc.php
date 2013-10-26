@@ -48,6 +48,13 @@ function usunPost($id){
     }
 }
 
+function get_data($url) {
+    $ch=curl_init(); //inicjalizacja
+    curl_setopt($ch, CURLOPT_URL,$url); // ustaw URLa na odpowiedni adres
+    $result = curl_exec($ch); // wykonaj "zapytanie" cURLa
+    curl_close($ch); // zamknięcie sesji curla
+    return $result;
+}
 
 function dodajCzlonka($zdjecie, $imie, $nazwisko, $opis){
     $pdo = polaczZBaza('localhost', 'ktg', 'root', '');
@@ -56,14 +63,18 @@ function dodajCzlonka($zdjecie, $imie, $nazwisko, $opis){
            die("Plik jest za duży");
         }
         move_uploaded_file($zdjecie['tmp_name'], 'member_photos\\'.$zdjecie['name']);
+
+        file_get_contents('http://' . $_SERVER['HTTP_HOST'] . dirname($_SERVER['SCRIPT_NAME']) . '/generate.php?image='.$zdjecie['name'].'&dir=member_photos');
+        $thumb_dir = 'member_photos\thumbs\\'.$zdjecie['name'];
         $file_dir = 'member_photos\\'.$zdjecie['name'];
     }else{
+        $thumb_dir = 'member_photos\blank_user.gif';
         $file_dir = 'member_photos\blank_user.gif';
     }
     
     $login = strtolower(substr($imie, 0,3)).strtolower(substr($nazwisko, 0,3)).strlen($imie).strlen($nazwisko);
-    $zapytanie = $pdo->prepare('INSERT INTO members (zdjecie, imie, nazwisko, opis, login) VALUES (?, ?, ?, ?, ?)');
-    $wynik = $zapytanie->execute(array($file_dir, $imie, $nazwisko, $opis, $login));
+    $zapytanie = $pdo->prepare('INSERT INTO members (zdjecie, thumb, imie, nazwisko, opis, login) VALUES (?, ?, ?, ?, ?, ?)');
+    $wynik = $zapytanie->execute(array($file_dir, $thumb_dir, $imie, $nazwisko, $opis, $login));
     if (is_null($wynik)) {
         echo 'Ups';
     }

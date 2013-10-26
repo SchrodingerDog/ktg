@@ -23,7 +23,7 @@
   </head>
 
   <body>
-    
+    <div class = "bg"></div>
     <div class="container">
       
       <?php require 'header.php'; ?>

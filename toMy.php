@@ -18,7 +18,7 @@
   </head>
 
   <body>
-    
+    <div class = "bg"></div>
     <div class="container">
       
       <?php require 'header.php'; ?>
@@ -37,8 +37,8 @@
       if(!is_null($members)){
         foreach($members->fetchAll() as $row){
           echo '<div class="row">';
-            echo '<div class="col-md-2">';
-              echo '<img class ="media-object" src = "'.$row['zdjecie'].'">';
+            echo '<div class="col-md-4">';
+              echo '<img class ="media-object" src = "'.$row['thumb'].'">';
             echo '</div>';
             echo '<div class="panel col-md-3">';
             echo '<div class="panel-title">';
