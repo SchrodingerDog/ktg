@@ -8,7 +8,9 @@ if(!isset($_SESSION['login'])){
     echo "Nieładnie, by tu wejść trzeba się zalogować";
     exit();
 }
-
+// for ($i=0; $i < 100; $i++) { 
+//     dodajPost('Tytul Paginacja', 'Tresc Paginacja');
+// }
 
 // try{
 //         $pdo = new PDO('mysql:host=localhost;dbname=ktg;charset=utf8', 'root', '');
