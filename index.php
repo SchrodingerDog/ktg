@@ -23,7 +23,7 @@
     <![endif]-->
   </head>
   <body>
-    <div class = "bg"></div>
+    <div class = "bg" style="display:none"></div>
     <div class="container">
       
     <?php require 'header.php'; ?>
@@ -188,8 +188,9 @@
 	<?php echo '<center>'.$pagination.'</center>'; ?>
 
     <?php require 'footer.php'; ?>
-
-    <script src="bootstrap/assets/js/jquery.js"></script>
-    <script src="bootstrap/dist/js/bootstrap.min.js"></script>
+    <script language="JavaScript" type="text/javascript" src="bootstrap/assets/js/jquery.js"></script>
+    <script language="JavaScript" type="text/javascript" src="bootstrap/dist/js/bootstrap.min.js"></script>
+    <script language="JavaScript" type="text/javascript" src="background.js"></script>
+    
   </body>
 </html>
