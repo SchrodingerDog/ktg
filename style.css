@@ -17,6 +17,13 @@
     position: fixed;
 }
 
+img{
+	border: 1px white solid;
+}
+.row{
+	margin-bottom: 15px;
+}
+
 #container {
 	min-height:100%;
 	position:relative;

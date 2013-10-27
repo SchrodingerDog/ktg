@@ -26,7 +26,9 @@
     <div class = "bg"></div>
     <div class="container">
       
-      <?php require 'header.php'; ?>
+      <?php require 'header.php'; 
+      require 'pagination.inc.php';?>
+
 
       <?php
       try{
@@ -35,6 +37,16 @@
       }catch(PDOException $e){
         // echo 'Ups, cos poszlo nie tak ';
       }
+      $zapytanie = $pdo->query("SELECT * FROM posts");
+      $posty_len = $zapytanie->rowCount();
+
+      define('ONPAGE',10);
+      define('ONSHOW',4);
+
+      $paginacja = Pagination($posty_len,1,'index.php/');
+
+      print_r($paginacja);
+      
 
       $posts = $pdo->query('SELECT * FROM posts ORDER BY id DESC');
 
@@ -63,6 +75,30 @@
             echo  '</div>';//col
             echo '</div>';//row
         }
+      }
+
+      if(!empty($paginacja)){ 
+      echo '<div class="Pagination"><nav><ul>';
+          if(!empty($paginacja['prev'])) {
+              echo '<li class="Arrow Left">
+                    <a href="'.$paginacja['prev'].'" title="Poprzednia strona">&laquo;</a>
+                    </li>';
+          }
+          if(!empty($paginacja['list'])) {
+              foreach($paginacja['list'] as $l) {
+                  if(empty($l['link'])) {
+                      echo '<li><strong>'.$l['nr'].'</strong></li>';
+                  }else{
+                      echo '<li><a href="'.$l['link'].'">'.$l['nr'].'</a></li>';
+                  }
+              }
+          }
+          if(!empty($paginacja['next'])) {
+              echo '<li class="Arrow Right">
+                    <a href="'.$paginacja['next'].'" title="Następna strona">&raquo;</a>
+                    </li>';
+          }
+      echo '</ul></nav></div>';
       }
       
       
