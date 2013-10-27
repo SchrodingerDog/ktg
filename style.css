@@ -18,10 +18,17 @@
 
 img{
 	border: 1px white solid;
+	-webkit-border-radius:5px;
 }
+
 .row{
 	margin-bottom: 15px;
 }
+
+.pagination > li > a.disabled, .pagination > li > span.disabled, .pagination > li > a.current, .pagination > li > span.current{
+	background-color: #DADADA;
+}
+
 
 .pagination{
 	position:relative;
@@ -39,9 +46,6 @@ footer{
 	position: relative;
 }
 
-#row{
-	padding-bottom: 15px;
-}
 
 .created{
 	text-align: right;

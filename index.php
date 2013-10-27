@@ -1,3 +1,4 @@
+<?php ob_start(); ?>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -73,15 +74,19 @@
 		Now we apply our rules and draw the pagination object. 
 		We're actually saving the code to a variable in case we want to draw it more than once.
 	*/
+	if ($lastpage<$page) {
+		header('Location: error.page.php');
+	}
+
 	$pagination = "";
 	if($lastpage > 1)
 	{	
 		$pagination .= "<ul class=\"pagination\">";
 		//previous button
 		if ($page > 1) 
-			$pagination.= "<li><a href=\"$targetpage?page=$prev\"> previous</a></li>";
+			$pagination.= "<li><a href=\"$targetpage?page=$prev\"> << </a></li>";
 		else
-			$pagination.= "<li><span class=\"disabled\"> previous</span></li>";	
+			$pagination.= "<li><span class=\"disabled\"> << </span></li>";	
 		
 		//pages	
 		if ($lastpage < 7 + ($adjacents * 2))	//not enough pages to bother breaking it up
@@ -106,7 +111,7 @@
 					else
 						$pagination.= "<li><a href=\"$targetpage?page=$counter\">$counter</a></li>";					
 				}
-				$pagination.= "...";
+				$pagination.= "<li><span class=\"disabled\"> ... </span></li>";
 				$pagination.= "<li><a href=\"$targetpage?page=$lpm1\">$lpm1</a></li>";
 				$pagination.= "<li><a href=\"$targetpage?page=$lastpage\">$lastpage</a></li>";		
 			}
@@ -115,7 +120,7 @@
 			{
 				$pagination.= "<li><a href=\"$targetpage?page=1\">1</a></li>";
 				$pagination.= "<li><a href=\"$targetpage?page=2\">2</a></li>";
-				$pagination.= "...";
+				$pagination.= "<li><span class=\"disabled\"> ... </span></li>";
 				for ($counter = $page - $adjacents; $counter <= $page + $adjacents; $counter++)
 				{
 					if ($counter == $page)
@@ -123,7 +128,7 @@
 					else
 						$pagination.= "<li><a href=\"$targetpage?page=$counter\">$counter</a></li>";					
 				}
-				$pagination.= "...";
+				$pagination.= "<li><span class=\"disabled\"> ... </span></li>";
 				$pagination.= "<li><a href=\"$targetpage?page=$lpm1\">$lpm1</a></li>";
 				$pagination.= "<li><a href=\"$targetpage?page=$lastpage\">$lastpage</a></li>";		
 			}
@@ -132,7 +137,7 @@
 			{
 				$pagination.= "<li><a href=\"$targetpage?page=1\">1</a></li>";
 				$pagination.= "<li><a href=\"$targetpage?page=2\">2</a></li>";
-				$pagination.= "...";
+				$pagination.= "<li><span class=\"disabled\"> ... </span></li>";
 				for ($counter = $lastpage - (2 + ($adjacents * 2)); $counter <= $lastpage; $counter++)
 				{
 					if ($counter == $page)
@@ -145,9 +150,9 @@
 		
 		//next button
 		if ($page < $counter - 1) 
-			$pagination.= "<li><a href=\"$targetpage?page=$next\">next </a></li>";
+			$pagination.= "<li><a href=\"$targetpage?page=$next\"> >> </a></li>";
 		else
-			$pagination.= "<li><span class=\"disabled\">next </span></li>";
+			$pagination.= "<li><span class=\"disabled\"> >> </span></li>";
 		$pagination.= "</ul>\n";		
 	}
 ?>
@@ -180,7 +185,7 @@
 	?>
 
 </div><!-- /.container -->
-	<?php echo'<center>'.$pagination.'</center>'; ?>
+	<?php echo '<center>'.$pagination.'</center>'; ?>
 
     <?php require 'footer.php'; ?>
 
