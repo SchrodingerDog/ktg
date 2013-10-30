@@ -17,14 +17,14 @@
     <ul class="nav navbar-nav">
       <li 
       <?php 
-      if($_SERVER['SCRIPT_NAME'] == '/ktg/index.php'){
+      if(endsWith($_SERVER['SCRIPT_NAME'], 'index.php')){
         echo 'class="active"';
       }
       ?>
       ><a href="index.php">Strona Główna</a></li>
       <li
        <?php 
-      if($_SERVER['SCRIPT_NAME'] == '/ktg/toMy.php'){
+      if(endsWith($_SERVER['SCRIPT_NAME'], 'toMy.php')){
         echo 'class="active"';
       }
       ?>

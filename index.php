@@ -1,4 +1,13 @@
-<?php ob_start(); ?>
+<?php ob_start(); 
+function startsWith($haystack, $needle)
+{
+    return $needle === "" || strpos($haystack, $needle) === 0;
+}
+function endsWith($haystack, $needle)
+{
+    return $needle === "" || substr($haystack, -strlen($needle)) === $needle;
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -8,7 +17,7 @@
     <meta name="author" content="Kamil Prosciewicz">
     <link rel="shortcut icon" href="bootstrap/assets/ico/favicon.png">
 
-    <title>Bootstrap_X0X0</title>
+    <title>KTG\Główna</title>
 
     <!-- Bootstrap core CSS -->
     <link href="bootstrap/dist/css/bootstrap.css" rel="stylesheet">
@@ -158,9 +167,11 @@
 ?>
 
 	<?php
+		$licznik = 0;
 		foreach($posts->fetchAll() as $row){
+				
 	            echo '<div id = "row">';
-	            if ($row['id']%2==1) {
+	            if ($licznik%2==1) {
 	              echo '<div class="col-md-6">';
 	            }else{
 	              echo '<div class="col-md-6 col-md-offset-6">';
@@ -181,6 +192,7 @@
 	            echo  '</div>';//panel panel-default
 	            echo  '</div>';//col
 	            echo '</div>';//row
+	            $licznik++;
 	        }
 	?>
 

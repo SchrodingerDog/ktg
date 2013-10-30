@@ -1,3 +1,13 @@
+<?php 
+function startsWith($haystack, $needle)
+{
+    return $needle === "" || strpos($haystack, $needle) === 0;
+}
+function endsWith($haystack, $needle)
+{
+    return $needle === "" || substr($haystack, -strlen($needle)) === $needle;
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -7,7 +17,7 @@
     <meta name="author" content="Kamil Prosciewicz">
     <link rel="shortcut icon" href="bootstrap/assets/ico/favicon.png">
 
-    <title>Bootstrap_X0X0</title>
+    <title>KTG\To My</title>
 
     <!-- Bootstrap core CSS -->
     <link href="bootstrap/dist/css/bootstrap.css" rel="stylesheet">
