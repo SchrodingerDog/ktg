@@ -1,5 +1,3 @@
-<?php session_start(); ?>
-
 <nav class="navbar navbar-inverse" role="navigation">
   <!-- Brand and toggle get grouped for better mobile display -->
   <div class="navbar-header">
@@ -29,6 +27,13 @@
       }
       ?>
       ><a href="toMy.php">To my!</a></li>
+      <li
+       <?php 
+      if(endsWith($_SERVER['SCRIPT_NAME'], 'wyjazdy.php')){
+        echo 'class="active"';
+      }
+      ?>
+      ><a href="wyjazdy.php">Wyjazdy</a></li>
       <li class="dropdown">
         <a href="#" class="dropdown-toggle" data-toggle="dropdown">Galeria<b class="caret"></b></a>
         <ul class="dropdown-menu">

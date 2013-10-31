@@ -1,12 +1,5 @@
-<?php ob_start(); 
-function startsWith($haystack, $needle)
-{
-    return $needle === "" || strpos($haystack, $needle) === 0;
-}
-function endsWith($haystack, $needle)
-{
-    return $needle === "" || substr($haystack, -strlen($needle)) === $needle;
-}
+<?php 
+require 'config.inc.php';
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -42,13 +35,7 @@ function endsWith($haystack, $needle)
 		$_GET['page']=1;
 	}
 
-	try{
-        $pdo = new PDO('mysql:host=localhost;dbname=ktg;charset=utf8', 'root', '');
-        // echo 'Połączono z bazą';
-      }catch(PDOException $e){
-        // echo 'Ups, cos poszlo nie tak ';
-      }
-
+	
 	$tbl_name="posts";		//your table name
 	// How many adjacent pages should be shown on each side?
 	$adjacents = 2;

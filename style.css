@@ -3,6 +3,14 @@
 	padding: 0;
 }
 
+.table{
+	position: relative;
+	background-color: #776E6E;
+}
+
+thead{
+background-color: #DADADA;
+}
 
 .bg{
     background: url(member_photos/lbpvXmZ.jpg) no-repeat center center fixed; 
