@@ -29,7 +29,7 @@ require 'config.inc.php';
       
       
 
-      <table class="table table-hover table-bordered">
+      <table class="table table-bordered">
       <thead>
         <tr>
           <td>#</td>
@@ -39,26 +39,27 @@ require 'config.inc.php';
       </thead>
       <?php
       $wyjazdy = $pdo->query('SELECT * FROM wyprawy');
+      $memb = array();
         foreach($wyjazdy->fetchAll(PDO::FETCH_ASSOC) as $row){
+          $memb = array();
           echo '<tr>';
             echo '<td>'.$row['id'].'</td>';
             echo '<td>'.$row['cel'].'</td>';
             echo '<td>'.$row['data'].'</td>';
           echo '</tr>';
-          echo '<tr style="display:none" class="niewidoczny"><td>nananan</td></tr>';
-      //     echo '<div class="row">';
-      //       echo '<div class="col-md-4">';
-      //         echo '<img class ="media-object" src = "'.$row['thumb'].'">';
-      //       echo '</div>';
-      //       echo '<div class="panel col-md-3">';
-      //       echo '<div class="panel-title">';
-      //         echo $row['nazwisko'].' '.$row['imie'].'<br>';
-      //       echo '</div>';
-      //         echo '<div class="panel-body">';
-      //           echo $row['opis'].'<br>';
-      //         echo '</div>'; 
-      //       echo '</div>';
-      //     echo '</div>';
+          echo '<tr style="display:none" class="niewidoczny">';
+          $uczestnicy = $pdo->query('SELECT 
+            `members`.`nazwisko`, `members`.`imie` FROM
+            `wyprawy`, `wyprawy_czlonkowie`, `members` WHERE
+            `members`.`id`=`wyprawy_czlonkowie`.`czlonek_id` AND
+            `wyprawy`.`id`= `wyprawy_czlonkowie`.`wyprawa_id` AND
+            `wyprawy_czlonkowie`.`wyprawa_id` = '.$row['id'].' ORDER BY
+            `members`.`nazwisko`');
+          foreach($uczestnicy->fetchAll(PDO::FETCH_ASSOC) as $uczestnik){
+            array_push($memb, $uczestnik['imie'].' '.$uczestnik['nazwisko']);
+          }
+          echo '<td colspan=3>'.implode(', ', $memb).'</td>';
+          echo '</tr>';
         }
       ?>
       </table>

@@ -5,12 +5,17 @@
 
 .table{
 	position: relative;
-	background-color: #776E6E;
+	background-color: #BBBBBB;
 }
 
 thead{
-background-color: #DADADA;
+	background-color: #DADADA;
 }
+/*
+.niewidoczny{
+
+	background-color: white;
+}*/
 
 .bg{
     background: url(member_photos/lbpvXmZ.jpg) no-repeat center center fixed; 
