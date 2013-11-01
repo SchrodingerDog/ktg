@@ -67,10 +67,30 @@ CREATE TABLE IF NOT EXISTS `posts` (
 --
 
 INSERT INTO `posts` (`id`, `tytul`, `tresc`, `created`) VALUES
-(1, 'Tytul1', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod\r\n        tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,\r\n        quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo\r\n        consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse\r\n        cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non\r\n        proident, sunt in culpa qui officia deserunt mollit anim id est laborum.', '2013-10-20'),
-(2, 'Tytul2', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod\r\n        tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,\r\n        quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo\r\n        consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse\r\n        cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non\r\n        proident, sunt in culpa qui officia deserunt mollit anim id est laborum.', '2013-10-20'),
-(3, 'Tytul3', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod\r\n        tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,\r\n        quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo\r\n        consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse\r\n        cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non\r\n        proident, sunt in culpa qui officia deserunt mollit anim id est laborum.', '2013-10-20'),
-(4, 'Tytul4', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod\r\n        tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,\r\n        quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo\r\n        consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse\r\n        cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non\r\n        proident, sunt in culpa qui officia deserunt mollit anim id est laborum.', '2013-10-20'),
+(1, 'Tytul1', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod\r\n        
+  tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,\r\n        
+  quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo\r\n        
+  consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse\r\n        
+  cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non\r\n        
+  proident, sunt in culpa qui officia deserunt mollit anim id est laborum.', '2013-10-20'),
+(2, 'Tytul2', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod\r\n        
+  tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,\r\n        
+  quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo\r\n        
+  consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse\r\n        
+  cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non\r\n        
+  proident, sunt in culpa qui officia deserunt mollit anim id est laborum.', '2013-10-20'),
+(3, 'Tytul3', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod\r\n        
+  tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,\r\n        
+  quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo\r\n        
+  consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse\r\n        
+  cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non\r\n        
+  proident, sunt in culpa qui officia deserunt mollit anim id est laborum.', '2013-10-20'),
+(4, 'Tytul4', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod\r\n        
+  tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,\r\n        
+  quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo\r\n        
+  consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse\r\n        
+  cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non\r\n        
+  proident, sunt in culpa qui officia deserunt mollit anim id est laborum.', '2013-10-20'),
 (7, 'Tytul Paginacja', 'Tresc Paginacja', '2013-10-27'),
 (9, 'Tytul Paginacja', 'Tresc Paginacja', '2013-10-27'),
 (10, 'Tytul Paginacja', 'Tresc Paginacja', '2013-10-27'),

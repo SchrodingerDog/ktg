@@ -45,6 +45,7 @@ require 'config.inc.php';
             echo '<td>'.$row['cel'].'</td>';
             echo '<td>'.$row['data'].'</td>';
           echo '</tr>';
+          echo '<tr style="display:none" class="niewidoczny"><td>nananan</td></tr>';
       //     echo '<div class="row">';
       //       echo '<div class="col-md-4">';
       //         echo '<img class ="media-object" src = "'.$row['thumb'].'">';

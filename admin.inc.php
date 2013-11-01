@@ -6,7 +6,6 @@ require 'config.inc.php';
 <head><meta charset="utf-8"></head>
 </html>
 <?php 
-session_start();
 
 function dodajPost($tytul, $tresc){
     $zapytanie = $pdo->prepare('INSERT INTO posts (tytul, tresc, created) VALUES (?, ?, CURRENT_TIMESTAMP)');
