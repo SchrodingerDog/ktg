@@ -1,21 +1,23 @@
 <?php 
 require 'config.inc.php';
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
 <head><meta charset="utf-8"></head>
-</html>
 <?php 
 
+global $pdo;
 function dodajPost($tytul, $tresc){
+
+    $pdo = new PDO('mysql:host=localhost;dbname=ktg', 'root', '');
     $zapytanie = $pdo->prepare('INSERT INTO posts (tytul, tresc, created) VALUES (?, ?, CURRENT_TIMESTAMP)');
-    $wynik = $zapytanie->execute(array($tytul,$tresc));
-    if (is_null($wynik)) {
-    	echo 'Ups';
-    }
+    $zapytanie->execute(array($tytul,$tresc));
 }
 
 function edytujPost($id, $tytul, $tresc){
+    
+    $pdo = new PDO('mysql:host=localhost;dbname=ktg', 'root', '');
     if ($tytul == '') {
         $zapytanie = $pdo->prepare('UPDATE posts SET tresc = ? WHERE id=?');
     }elseif ($tresc == '') {
@@ -38,6 +40,7 @@ function edytujPost($id, $tytul, $tresc){
 }
 
 function usunPost($id){
+    $pdo = new PDO('mysql:host=localhost;dbname=ktg', 'root', '');    
     $zapytanie = $pdo->prepare('DELETE FROM posts WHERE id = ?');
     $wynik = $zapytanie->execute(array($id));
     if (is_null($wynik)) {
@@ -47,6 +50,7 @@ function usunPost($id){
 
 
 function dodajCzlonka($zdjecie, $imie, $nazwisko, $opis){
+    $pdo = new PDO('mysql:host=localhost;dbname=ktg', 'root', '');
     if(is_uploaded_file($zdjecie['tmp_name'])){
         if ($zdjecie['size']>(1024*1024)) {
            die("Plik jest za duży");
@@ -69,6 +73,8 @@ function dodajCzlonka($zdjecie, $imie, $nazwisko, $opis){
     }
 }
 function superUser($id){
+    
+    $pdo = new PDO('mysql:host=localhost;dbname=ktg', 'root', '');
     $zapytanie = $pdo->prepare('UPDATE  `members` SET  `super_user` = 1 WHERE id =?');
     $wynik = $zapytanie->execute(array($id));
     echo 'Funkcja wykonana';
@@ -78,3 +84,5 @@ function superUser($id){
 }
 
 ?>
+
+</html>

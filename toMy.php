@@ -26,6 +26,7 @@ require 'config.inc.php';
       
       <?php require 'header.php'; 
 
+      $pdo = new PDO('mysql:host=localhost;dbname=ktg', 'root', '');
       $members = $pdo->query('SELECT * FROM members ORDER BY id');
 
       if(!is_null($members)){

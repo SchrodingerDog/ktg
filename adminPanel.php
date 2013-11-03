@@ -1,3 +1,5 @@
+<?php require 'admin.inc.php'; ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -5,7 +7,6 @@
 </head>
 </html>
 <?php
-require 'admin.inc.php';
 if(!isset($_SESSION['login'])){
     echo "Nieładnie, by tu wejść trzeba się zalogować";
     exit();

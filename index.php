@@ -31,6 +31,8 @@ require 'config.inc.php';
     <?php require 'header.php'; ?>
 
 	<?php
+	$pdo = new PDO('mysql:host=localhost;dbname=ktg', 'root', '');
+	
 	if (!isset($_GET['page'])) {
 		$_GET['page']=1;
 	}
@@ -58,6 +60,7 @@ require 'config.inc.php';
 		$start = 0;								//if no page var is given, set start to 0
 	
 	/* Get data. */
+
 	$posts = $pdo->query("SELECT * FROM $tbl_name ORDER BY id DESC LIMIT $start, $limit");
 	/* Setup page vars for display. */
 	if ($page == 0) $page = 1;					//if no page var is given, default to 1.

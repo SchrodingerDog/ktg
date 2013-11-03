@@ -8,13 +8,17 @@
 	background-color: #BBBBBB;
 }
 
+.table-bordered > tbody > tr > td, .table-bordered > thead > tr > td{
+	border-color: #A54949;
+}
+
 thead{
 	background-color: #DADADA;
 }
-/*
-.niewidoczny{
 
-	background-color: white;
+/*.niewidoczny{
+
+	background-color: #ecff5c;
 }*/
 
 .bg{

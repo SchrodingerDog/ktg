@@ -31,37 +31,59 @@ require 'config.inc.php';
 
       <table class="table table-bordered">
       <thead>
-        <tr>
-          <td>#</td>
+        <tr style="background-color: rgb(255, 60, 60)">
+          <?php if(isset($_SESSION['login'])){
+            echo '<td>#</td>';
+          }
+          ?>
           <td>Cel</td>
           <td>Data</td>
         </tr>
       </thead>
+      <tbody>
       <?php
+      $pdo = new PDO('mysql:host=localhost;dbname=ktg', 'root', '');
       $wyjazdy = $pdo->query('SELECT * FROM wyprawy');
+      
       $memb = array();
+
         foreach($wyjazdy->fetchAll(PDO::FETCH_ASSOC) as $row){
           $memb = array();
-          echo '<tr>';
-            echo '<td>'.$row['id'].'</td>';
+          echo '<tr style="background-color:#FFA22C">';
+            if(isset($_SESSION['login'])){
+              echo '<td>'.$row['id'].'</td>';
+            }
             echo '<td>'.$row['cel'].'</td>';
             echo '<td>'.$row['data'].'</td>';
           echo '</tr>';
+
           echo '<tr style="display:none" class="niewidoczny">';
-          $uczestnicy = $pdo->query('SELECT 
-            `members`.`nazwisko`, `members`.`imie` FROM
-            `wyprawy`, `wyprawy_czlonkowie`, `members` WHERE
-            `members`.`id`=`wyprawy_czlonkowie`.`czlonek_id` AND
-            `wyprawy`.`id`= `wyprawy_czlonkowie`.`wyprawa_id` AND
-            `wyprawy_czlonkowie`.`wyprawa_id` = '.$row['id'].' ORDER BY
-            `members`.`nazwisko`');
-          foreach($uczestnicy->fetchAll(PDO::FETCH_ASSOC) as $uczestnik){
-            array_push($memb, $uczestnik['imie'].' '.$uczestnik['nazwisko']);
-          }
-          echo '<td colspan=3>'.implode(', ', $memb).'</td>';
+            echo '<td colspan = 3>';
+            echo '<table style="width:100%; margin:0px" class="table table-bordered">';
+              $uczestnicy = $pdo->query('SELECT 
+                `members`.`nazwisko`, `members`.`imie` FROM
+                `wyprawy`, `wyprawy_czlonkowie`, `members` WHERE
+                `members`.`id`=`wyprawy_czlonkowie`.`czlonek_id` AND
+                `wyprawy`.`id`= `wyprawy_czlonkowie`.`wyprawa_id` AND
+                `wyprawy_czlonkowie`.`wyprawa_id` = '.$row['id'].' ORDER BY
+                `members`.`nazwisko`');
+              foreach($uczestnicy->fetchAll(PDO::FETCH_ASSOC) as $uczestnik){
+                array_push($memb, $uczestnik['imie'].' '.$uczestnik['nazwisko']);
+              }
+              echo '<tr style="background-color:#ecff5c">';
+                echo '<td colspan=3>'.implode(', ', $memb).'</td>';
+              echo '</tr>';
+              echo '<tr style="background-color:#ecff5c">';
+                echo '<td style="width:50%" align = "center"><a href="galeria.php?id='.$row['id'].'">Galeria</a></td>';
+                echo '<td style="width:50%" align = "center"><a href="sprawozdanie.php?id='.$row['id'].'">Sprawozdanie</a></td>';
+              echo "</tr>";
+            echo '</table>';
+            echo '</td>';
           echo '</tr>';
+
         }
       ?>
+      </tbody>
       </table>
       
     </div><!-- /.container -->
