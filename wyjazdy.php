@@ -33,7 +33,7 @@ require 'config.inc.php';
       <thead>
         <tr style="background-color: rgb(255, 60, 60)">
           <?php if(isset($_SESSION['login'])){
-            echo '<td>#</td>';
+            echo '<td>ID</td>';
           }
           ?>
           <td>Cel</td>
@@ -92,7 +92,8 @@ require 'config.inc.php';
     <script language="JavaScript" type="text/javascript" src="bootstrap/assets/js/jquery.js"></script>
     <script language="JavaScript" type="text/javascript" src="bootstrap/dist/js/bootstrap.min.js"></script>
     <script language="JavaScript" type="text/javascript" src="background.js"></script>
-    <script language="JavaScript" type="text/javascript" src="table.js"></script>
+    <!--<script language="JavaScript" type="text/javascript" src="table.js"></script>-->
+    <script language="JavaScript" type="text/javascript" src="table_randoms.js"></script>
 
 
   </body>

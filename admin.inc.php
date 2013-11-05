@@ -15,6 +15,17 @@ function dodajPost($tytul, $tresc){
     $zapytanie->execute(array($tytul,$tresc));
 }
 
+function zamienSlashe(){
+	$pdo = new PDO('mysql:host=localhost;dbname=ktg', 'root', '');
+	$zapytanie= $pdo->query('SELECT * FROM members');
+	foreach($zapytanie as $row){
+		$zdjecie = str_replace('\\','/', $row['zdjecie']);
+		$thumb = str_replace('\\','/', $row['thumb']);
+		$query = $pdo->prepare('UPDATE  `members` SET  `zdjecie` = ?, `thumb` = ? WHERE id =?');
+		$query->execute(array($zdjecie, $thumb, $row[id]));
+	}
+}
+
 function edytujPost($id, $tytul, $tresc){
     
     $pdo = new PDO('mysql:host=localhost;dbname=ktg', 'root', '');
@@ -55,14 +66,14 @@ function dodajCzlonka($zdjecie, $imie, $nazwisko, $opis){
         if ($zdjecie['size']>(1024*1024)) {
            die("Plik jest za duży");
         }
-        move_uploaded_file($zdjecie['tmp_name'], 'member_photos\\'.$zdjecie['name']);
+        move_uploaded_file($zdjecie['tmp_name'], 'member_photos/'.$zdjecie['name']);
 
         file_get_contents('http://' . $_SERVER['HTTP_HOST'] . dirname($_SERVER['SCRIPT_NAME']) . '/generate.php?image='.$zdjecie['name'].'&dir=member_photos');
-        $thumb_dir = 'member_photos\thumbs\\'.$zdjecie['name'];
-        $file_dir = 'member_photos\\'.$zdjecie['name'];
+        $thumb_dir = 'member_photos/thumbs/'.$zdjecie['name'];
+        $file_dir = 'member_photos/'.$zdjecie['name'];
     }else{
-        $thumb_dir = 'member_photos\blank_user.gif';
-        $file_dir = 'member_photos\blank_user.gif';
+        $thumb_dir = 'member_photos/blank_user.gif';
+        $file_dir = 'member_photos/blank_user.gif';
     }
     
     $login = strtolower(substr($imie, 0,3)).strtolower(substr($nazwisko, 0,3)).strlen($imie).strlen($nazwisko);
@@ -72,6 +83,9 @@ function dodajCzlonka($zdjecie, $imie, $nazwisko, $opis){
         echo 'Ups';
     }
 }
+
+
+
 function superUser($id){
     
     $pdo = new PDO('mysql:host=localhost;dbname=ktg', 'root', '');

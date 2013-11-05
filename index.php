@@ -168,10 +168,10 @@ require 'config.inc.php';
 	            }
 	            echo '<div class="panel panel-default">';
 	            echo  '<div class="panel-heading">';
-	            echo   '<h3 class="panel-title">'.$row['tytul'].'</h3>';
+	            echo   '<h3 class="panel-title">'.stripslashes($row['tytul']).'</h3>';
 	            echo  '</div>';
 	            echo  '<div class="panel-body">';
-	            echo    $row['tresc'].'<br>';
+	            echo    stripslashes($row['tresc'].'<br>');
 	            echo  '</div>';
 	            echo  '<div class="panel-footer">';
 	            if (isset($_SESSION['login'])) {

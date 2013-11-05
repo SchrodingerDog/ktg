@@ -1,0 +1,25 @@
+$('tbody tr').not('table tbody tr td table tr').click(function () {
+    var clicked = $(this);
+	var r = Math.floor(Math.random()*255);
+	var g = Math.floor(Math.random()*255);
+	var b = Math.floor(Math.random()*255);
+    $('tbody tr').not('table tbody tr td table tr').css('background-color', 'rgb('+r+', '+g+', '+b+')');
+    var r = Math.floor(Math.random()*255);
+    var g = Math.floor(Math.random()*255);
+    var b = Math.floor(Math.random()*255);
+	$('thead tr').not('table thead tr td table thead tr').css('background-color', 'rgb('+r+', '+g+', '+b+')');
+    var r = Math.floor(Math.random()*255);
+    var g = Math.floor(Math.random()*255);
+    var b = Math.floor(Math.random()*255);
+    $(this).not('table tbody tr td table tr').css('background-color', 'rgb('+r+', '+g+', '+b+')');
+    var r = Math.floor(Math.random()*255);
+    var g = Math.floor(Math.random()*255);
+    var b = Math.floor(Math.random()*255);
+    $('.niewidoczny td table tr').css('background-color', 'rgb('+r+', '+g+', '+b+')');
+    $('.niewidoczny').stop(true).slideUp(200);
+    clicked.next('.niewidoczny').stop(true).slideDown(200);
+    var r = Math.floor(Math.random()*255);
+    var g = Math.floor(Math.random()*255);
+    var b = Math.floor(Math.random()*255);
+    $('.niewidoczny').css('background-color', 'rgb('+r+', '+g+', '+b+')');
+});
