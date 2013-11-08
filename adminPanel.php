@@ -1,7 +1,10 @@
-<?php require 'admin.inc.php'; ?>
+<?php 
+require 'admin.inc.php'; 
+require 'dbConn.inc.php';
+?>
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pl">
 <head>
 <meta charset="utf-8">
 </head>
@@ -34,16 +37,8 @@ if (!empty($_POST['tresc']) and !empty($_POST['tytul'])) {
 	dodajPost($tytul, $tresc);
 }
 
-if (!empty($_POST['id_edycja'])) {
-    if (!empty($_POST['tytul_edycja'])) {
-        if (!empty($_POST['tresc_edycja'])) {
-            edytujPost($_POST['id_edycja'], $_POST['tytul_edycja'], $_POST['tresc_edycja']);    
-        }else{
-            edytujPost($_POST['id_edycja'], $_POST['tytul_edycja'], '');
-        }
-    }elseif (!empty($_POST['tresc_edycja'])) {
-      edytujPost($_POST['id_edycja'], '', $_POST['tresc_edycja']);  
-    }
+if (!empty($_POST['id_edycja']) and !empty($_POST['tytul_edycja']) and !empty($_POST['tresc_edycja'])) {
+    edytujPost($_POST['id_edycja'], $_POST['tytul_edycja'], $_POST['tresc_edycja']);  
 }
 
 if (!empty($_POST['id_usun'])) {

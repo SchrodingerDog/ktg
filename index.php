@@ -1,4 +1,5 @@
 <?php 
+require 'dbConn.inc.php';
 require 'config.inc.php';
 ?>
 <!DOCTYPE html>
@@ -31,7 +32,7 @@ require 'config.inc.php';
     <?php require 'header.php'; ?>
 
 	<?php
-	$pdo = new PDO('mysql:host=localhost;dbname=ktg', 'root', '');
+	// $pdo = new PDO('mysql:host=localhost;dbname=ktg', 'root', '');
 	
 	if (!isset($_GET['page'])) {
 		$_GET['page']=1;

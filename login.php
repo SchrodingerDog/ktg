@@ -1,4 +1,5 @@
 <?php 
+require 'dbConn.inc.php';
 ob_start();
 session_start();
 
@@ -9,12 +10,7 @@ if(!empty($_POST['login']) and !empty($_POST['password'])){
 	loguj($login, $password);
 }
 function loguj($login, $password){
-	try{
-        $pdo = new PDO('mysql:host=localhost;dbname=ktg;charset=utf8', 'root', '');
-        echo 'Połaczono z baza';
-      }catch(PDOException $e){
-        echo 'Ups cos poszlo nie tak ';
-    }
+    require 'dbConn.inc.php';
     $members = $pdo->prepare('SELECT * FROM members WHERE login = ?');
     $members->execute(array($login));
     $row = $members->fetchAll(PDO::FETCH_ASSOC);

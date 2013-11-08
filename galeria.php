@@ -1,4 +1,7 @@
-<?php require 'config.inc.php'; ?>
+<?php 
+require 'dbConn.inc.php';
+require'config.inc.php'; 
+?>
 <!DOCTYPE html>
 <html lang="en">
   <head>

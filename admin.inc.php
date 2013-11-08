@@ -1,4 +1,5 @@
 <?php 
+require 'dbConn.inc.php';
 require 'config.inc.php';
 
 ?>
@@ -9,14 +10,16 @@ require 'config.inc.php';
 
 global $pdo;
 function dodajPost($tytul, $tresc){
+    require 'dbConn.inc.php';
 
-    $pdo = new PDO('mysql:host=localhost;dbname=ktg', 'root', '');
+    // $pdo = new PDO('mysql:host=localhost;dbname=ktg', 'root', '');
     $zapytanie = $pdo->prepare('INSERT INTO posts (tytul, tresc, created) VALUES (?, ?, CURRENT_TIMESTAMP)');
     $zapytanie->execute(array($tytul,$tresc));
 }
 
 function zamienSlashe(){
-	$pdo = new PDO('mysql:host=localhost;dbname=ktg', 'root', '');
+    require 'dbConn.inc.php';
+	// $pdo = new PDO('mysql:host=localhost;dbname=ktg', 'root', '');
 	$zapytanie= $pdo->query('SELECT * FROM members');
 	foreach($zapytanie as $row){
 		$zdjecie = str_replace('\\','/', $row['zdjecie']);
@@ -27,31 +30,15 @@ function zamienSlashe(){
 }
 
 function edytujPost($id, $tytul, $tresc){
-    
-    $pdo = new PDO('mysql:host=localhost;dbname=ktg', 'root', '');
-    if ($tytul == '') {
-        $zapytanie = $pdo->prepare('UPDATE posts SET tresc = ? WHERE id=?');
-    }elseif ($tresc == '') {
-        $zapytanie = $pdo->prepare('UPDATE posts SET tytul=? WHERE id=?');   
-    }else{
-        $zapytanie = $pdo->prepare('UPDATE posts SET tytul=? tresc = ? WHERE id=?');    
-    }
-    
-    if ($tytul == '') {
-        $wynik = $zapytanie->execute(array($tresc,$id));
-    }elseif ($tresc == '') {
-        $wynik = $zapytanie->execute(array($tytul,$id));   
-    }else{
-        $wynik = $zapytanie->execute(array($tytul,$tresc,$id));    
-    }
-
-    if (is_null($wynik)) {
-        echo 'Ups';
-    }   
+    require 'dbConn.inc.php';    // $pdo = new PDO('mysql:host=localhost;dbname=ktg', 'root', '');
+    $zapytanie = $pdo->prepare('UPDATE `posts` SET `tytul`=?, `tresc` = ? WHERE id=?');    
+    $zapytanie->execute(array($tytul,$tresc,$id)); 
 }
 
 function usunPost($id){
-    $pdo = new PDO('mysql:host=localhost;dbname=ktg', 'root', '');    
+    
+    require 'dbConn.inc.php';
+    // $pdo = new PDO('mysql:host=localhost;dbname=ktg', 'root', '');    
     $zapytanie = $pdo->prepare('DELETE FROM posts WHERE id = ?');
     $wynik = $zapytanie->execute(array($id));
     if (is_null($wynik)) {
@@ -61,7 +48,9 @@ function usunPost($id){
 
 
 function dodajCzlonka($zdjecie, $imie, $nazwisko, $opis){
-    $pdo = new PDO('mysql:host=localhost;dbname=ktg', 'root', '');
+    
+    require 'dbConn.inc.php';
+    // $pdo = new PDO('mysql:host=localhost;dbname=ktg', 'root', '');
     if(is_uploaded_file($zdjecie['tmp_name'])){
         if ($zdjecie['size']>(1024*1024)) {
            die("Plik jest za duży");
@@ -87,8 +76,8 @@ function dodajCzlonka($zdjecie, $imie, $nazwisko, $opis){
 
 
 function superUser($id){
-    
-    $pdo = new PDO('mysql:host=localhost;dbname=ktg', 'root', '');
+    require 'dbConn.inc.php';
+    // $pdo = new PDO('mysql:host=localhost;dbname=ktg', 'root', '');
     $zapytanie = $pdo->prepare('UPDATE  `members` SET  `super_user` = 1 WHERE id =?');
     $wynik = $zapytanie->execute(array($id));
     echo 'Funkcja wykonana';

@@ -1,8 +1,9 @@
 <?php 
+require 'dbConn.inc.php';
 require 'config.inc.php';
 ?>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pl">
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -42,7 +43,7 @@ require 'config.inc.php';
       </thead>
       <tbody>
       <?php
-      $pdo = new PDO('mysql:host=localhost;dbname=ktg', 'root', '');
+      // $pdo = new PDO('mysql:host=localhost;dbname=ktg', 'root', '');
       $wyjazdy = $pdo->query('SELECT * FROM wyprawy');
       
       $memb = array();
