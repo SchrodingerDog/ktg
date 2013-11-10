@@ -14,8 +14,7 @@ require'config.inc.php';
     <title>Bootstrap_X0X0</title>
 
     <!-- Bootstrap core CSS -->
-    <link href="bootstrap/dist/css/bootstrap.css" rel="stylesheet">
-
+    
     <!-- Custom style -->
     <link href="style.css" rel="stylesheet">
 
@@ -30,15 +29,34 @@ require'config.inc.php';
     <div class="container">
       
     <?php require 'header.php'; ?>
-    <?php if (isset($_GET['id'])) {
-		$id = $_GET['id'];
-	}
-	?>
-	<center><div class="panel" style="position:relative"><br><br><br><br><br><br><br><br><br><br>Witaj w galerii nr <?php echo $id; ?><br><br><br><br><br><br><br><br><br><br></div></center>
-
+    <?php 
+    if (isset($_GET['id'])) {
+		  $id = $_GET['id'];
+    }
+	// <center><div class="panel" style="position:relative"><br><br><br><br><br><br><br><br><br><br>Witaj w galerii nr <?php echo $id; <br><br><br><br><br><br><br><br><br><br></div></center> -->
+    $wyjazdy = $pdo->query('SELECT ilosc_zdj FROM galeries WHERE id ='.$id);
+    $ilosc_zdj = $wyjazdy->fetch()[0];
+    for ($i=0; $i < $ilosc_zdj; $i++) { 
+      // <a class="fancybox" style="display:inline; margin-left:15px;" rel="group" href="/galerie/$id/$i.jpg"><img src="/galerie/$id/thumbs/$i.jpg" alt="" /></a>
+      echo '<a class="fancybox" style="display:inline; margin-left:15px;" rel="group" href="galerie/'.$id.'/'.$i.'.jpg"><img style=" border: 1px white solid;" src="galerie/'.$id.'/thumbs/'.$i.'.jpg" alt="" /></a>';
+    }
+    ?>
     <?php require 'footer.php'; ?>
 
     <script src="bootstrap/assets/js/jquery.js"></script>
     <script src="bootstrap/dist/js/bootstrap.min.js"></script>
+    <link href="bootstrap/dist/css/bootstrap.css" rel="stylesheet">
+    <link rel="stylesheet" href="fancybox/source/jquery.fancybox.css" type="text/css" media="screen" />
+    <script type="text/javascript" src="fancybox/source/jquery.fancybox.pack.js"></script>
+
+    <!-- Optionally add helpers - button, thumbnail and/or media -->
+    <link rel="stylesheet" href="fancybox/source/helpers/jquery.fancybox-buttons.css" type="text/css" media="screen" />
+    <script type="text/javascript" src="fancybox/source/helpers/jquery.fancybox-buttons.js"></script>
+    <script type="text/javascript" src="fancybox/source/helpers/jquery.fancybox-media.js"></script>
+
+    <link rel="stylesheet" href="fancybox/source/helpers/jquery.fancybox-thumbs.css" type="text/css" media="screen" />
+    <script type="text/javascript" src="fancybox/source/helpers/jquery.fancybox-thumbs.js"></script>
+    <script src="galeria.js"></script>
+
   </body>
 </html>

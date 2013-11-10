@@ -38,6 +38,9 @@ require 'config.inc.php';
             echo '</div>';
             echo '<div class="panel col-md-3">';
             echo '<div class="panel-title">';
+              if(isset($_SESSION['login'])){
+                echo '#'.$row['id'].' ';
+              }
               echo $row['nazwisko'].' '.$row['imie'].'<br>';
             echo '</div>';
               echo '<div class="panel-body">';

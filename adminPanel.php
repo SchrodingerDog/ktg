@@ -41,8 +41,8 @@ if (!empty($_POST['id_edycja']) and !empty($_POST['tytul_edycja']) and !empty($_
     edytujPost($_POST['id_edycja'], $_POST['tytul_edycja'], $_POST['tresc_edycja']);  
 }
 
-if (!empty($_POST['id_usun'])) {
-    usunPost($_POST['id_usun']);
+if (!empty($_POST['id_usun_post'])) {
+    usunPost($_POST['id_usun_post']);
 }
 
 if (!empty($_POST['imie']) and !empty($_POST['nazwisko']) and !empty($_POST['opis'])) {
@@ -54,36 +54,112 @@ if (!empty($_POST['imie']) and !empty($_POST['nazwisko']) and !empty($_POST['opi
 
 }
 
+if (!empty($_POST['id_edytuj_czlonka']) and !empty($_POST['imie_edytuj']) and !empty($_POST['nazwisko_edytuj']) and !empty($_POST['opis_edytuj'])) {
+    $id = $_POST['id_edytuj_czlonka'];
+    $zdjecie = $_FILES['zdjecie_edytuj'];
+    $imie = $_POST['imie_edytuj'];
+    $nazwisko = $_POST['nazwisko_edytuj'];
+    $opis = $_POST['opis_edytuj'];
+    edytujCzlonka($id, $zdjecie, $imie, $nazwisko, $opis);
+
+}
+
+if (!empty($_POST['id_usun_czlonka'])) {
+    usunCzlonka($_POST['id_usun_czlonka']);
+}
+
+if (!empty($_POST['cel']) and !empty($_POST['data'])) {
+    $cel = $_POST['cel'];
+    $data = $_POST['data'];
+
+    dodajWyjazd($cel, $data);
+}
+
+if (!empty($_POST['id_edytuj_wyjazd']) and !empty($_POST['cel_edytuj']) and !empty($_POST['data_edytuj'])) {
+    $id = $_POST['id_edytuj_wyjazd'];
+    $cel = $_POST['cel_edytuj'];
+    $data = $_POST['data_edytuj'];
+
+    edytujWyjazd($id,$cel, $data);
+}
+
+if (!empty($_POST['id_usun_wyjazd'])) {
+    usunWyjazd($_POST['id_usun_wyjazd']);
+}
+
+if (!empty($_POST['czlonkowie_wyjazd']) and !empty($_POST['id_czlonkowie_wyjazd'])) {
+    czlonkowieWyjazd($_POST['id_czlonkowie_wyjazd'], $_POST['czlonkowie_wyjazd']);
+}
+
+if (!empty($_POST['id_galeria_wyjazd']) and !empty($_FILES['galeria_wyjazd'])) {
+    dodajGalerie($_POST['id_galeria_wyjazd'], $_FILES['galeria_wyjazd']);
+}
+
 if(!empty($_POST['id_super'])){
     $id = $_POST['id_super'];
     superUser($id);
-    echo 'Wywolano funkcje';
 }
 
 ?>
 
-<form name = 'form' action = 'adminPanel.php' method="POST" ENCTYPE="multipart/form-data">
-
+<form name = 'form' action = 'adminPanel.php' method="POST" enctype="multipart/form-data">
+<b>Dodaj post</b><br>
 Tytul postu:                <input type="text" name="tytul"><br>
 
 Tresc postu:                <textarea name="tresc"></textarea><br>
 <hr>
-
-ID postu do edycji (*):     <input type="text" name="id_edycja"><br>
-Tytul postu do edycji(pusty jesli ma zostac bez zmian): 
+<b>Edytuj post</b><br>
+ID postu do edycji:         <input type="text" name="id_edycja"><br>
+Tytul postu: 
                             <input type="text" name="tytul_edycja"><br>
-Tresc postu do edycji(pusty jesli ma zostac bez zmian): 
+Tresc postu : 
                             <textarea name="tresc_edycja"></textarea><br>
 <hr>
-ID postu do usuniecia (*):  <input type="text" name="id_usun"><br>
+<b>Usun post</b><br>
+ID postu do usuniecia:      <input type="text" name="id_usun_post"><br>
 UWAGA! Nie ma potwierdzenia i backupu, wiec trzeba uwazac!
 <hr>
-Dodaj czlonka kola:<br>
+<b>Dodaj czlonka kola</b><br>
 Zdjecie(max 1 MB):          <input type="file" name="zdjecie"><br>
 Imie:                       <input type="text" name="imie"><br>
 Nazwisko:                   <input type="text" name="nazwisko"><br>
 Krotki opis:                <textarea name="opis"></textarea><br>
 <hr>
+<b>Edytuj czlonka kola</b><br>
+ID:                         <input type="text" name="id_edytuj_czlonka"><br>
+Zdjecie(max 1 MB):          <input type="file" name="zdjecie_edytuj"><br>
+Imie:                       <input type="text" name="imie_edytuj"><br>
+Nazwisko:                   <input type="text" name="nazwisko_edytuj"><br>
+Krotki opis:                <textarea name="opis_edytuj"></textarea><br>
+<hr>
+<b>Usun czlonka kola</b><br>
+ID czlonka do usuniecia:  <input type="text" name="id_usun_czlonka"><br>
+UWAGA! Nie ma potwierdzenia i backupu, wiec trzeba uwazac!
+<hr>
+<b>Dodaj wyjazd</b><br>
+Cel:                        <input type="text" name="cel"><br>
+Data(forma: dd-mm-rrrr):    <input type="text" name="data"><br>
+<hr>
+<b>Edytuj wyjazd</b><br>
+ID:                         <input type="text" name="id_edytuj_wyjazd"><br>
+Cel:                        <input type="text" name="cel_edytuj"><br>
+Data(forma: rrrr-mm-dd):    <input type="text" name="data_edytuj"><br>
+<hr>
+<b>Usun wyjazd</b><br>
+ID wyjazdu do usuniecia:  <input type="text" name="id_usun_wyjazd"><br>
+UWAGA! Nie ma potwierdzenia i backupu, wiec trzeba uwazac!
+<hr>
+<b>Dodaj czlonkow do wyjazdu</b><br>
+ID wyjazdu:                 <input type="text" name="id_czlonkowie_wyjazd"><br>
+Czlonkowie(id, po przecinku)<input type="text" name="czlonkowie_wyjazd"><br>
+<hr>
+<b>Dodaj galerie do wyjazdu</b><br>
+ID wyjazdu:                 <input type="text" name="id_galeria_wyjazd"><br>
+Zdjecia                     <input type="file" name="galeria_wyjazd[]" multiple="multiple"><br>
+<hr>
+
+
+
 <?php if($_SESSION['login']=='kampro512'){
     echo 'Super user dla uzytkownika o ID <input type="text" name="id_super"><br>';
     echo '<hr>';

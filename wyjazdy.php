@@ -72,7 +72,11 @@ require 'config.inc.php';
                 array_push($memb, $uczestnik['imie'].' '.$uczestnik['nazwisko']);
               }
               echo '<tr style="background-color:#ecff5c">';
-                echo '<td colspan=3>'.implode(', ', $memb).'</td>';
+                if (empty($memb)) {
+                  echo '<td colspan=3>Jeszcze nie dodano</td>';
+                }else{
+                  echo '<td colspan=3>'.implode(', ', $memb).'</td>';
+                }
               echo '</tr>';
               echo '<tr style="background-color:#ecff5c">';
                 echo '<td style="width:50%" align = "center"><a href="galeria.php?id='.$row['id'].'">Galeria</a></td>';
@@ -93,8 +97,8 @@ require 'config.inc.php';
     <script language="JavaScript" type="text/javascript" src="bootstrap/assets/js/jquery.js"></script>
     <script language="JavaScript" type="text/javascript" src="bootstrap/dist/js/bootstrap.min.js"></script>
     <script language="JavaScript" type="text/javascript" src="background.js"></script>
-    <!--<script language="JavaScript" type="text/javascript" src="table.js"></script>-->
-    <script language="JavaScript" type="text/javascript" src="table_randoms.js"></script>
+    <script language="JavaScript" type="text/javascript" src="table.js"></script>
+    <!-- // <script language="JavaScript" type="text/javascript" src="table_randoms.js"></script> -->
 
 
   </body>
