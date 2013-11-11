@@ -155,8 +155,7 @@ function superUser($id){
     $zapytanie = $pdo->prepare('UPDATE  `members` SET  `super_user` = 1 WHERE id =?');
     $wynik = $zapytanie->execute(array($id));
     echo 'Funkcja wykonana';
-    
-
+}
 ?>
 
 </html>
