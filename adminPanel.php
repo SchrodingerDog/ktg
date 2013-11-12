@@ -104,76 +104,76 @@ if(!empty($_POST['id_super'])){
 
 <form name = 'form' action = 'adminPanel.php' method="POST" enctype="multipart/form-data">
 <b>Dodaj post</b><br>
-Tytul postu:                <input type="text" name="tytul"><br>
+Tytul postu:                <input type="text" name="tytul"/><br>
 
 Tresc postu:                <textarea name="tresc"></textarea><br>
 <hr>
 <div class="edit post">
 <b>Edytuj post</b><br>
-ID postu do edycji:         <input type="text" name="id_edycja"><br>
+ID postu do edycji:         <input class = "id" type="text" name="id_edycja"/><br>
 Tytul postu: 
-                            <input type="text" name="tytul_edycja"><br>
+                            <input type="text" name="tytul_edycja"/><br>
 Tresc postu : 
                             <textarea name="tresc_edycja"></textarea><br>
 <hr>
 </div>
 <div class="delete post">
 <b>Usun post</b><br>
-ID postu do usuniecia:      <input type="text" name="id_usun_post"><br>
+ID postu do usuniecia:      <input class = "id" type="text" name="id_usun_post"/><br>
 UWAGA! Nie ma potwierdzenia i backupu, wiec trzeba uwazac!
 </div>
 <hr>
 <b>Dodaj czlonka kola</b><br>
-Zdjecie(max 1 MB):          <input type="file" name="zdjecie"><br>
-Imie:                       <input type="text" name="imie"><br>
-Nazwisko:                   <input type="text" name="nazwisko"><br>
+Zdjecie(max 1 MB):          <input type="file" name="zdjecie"/><br>
+Imie:                       <input type="text" name="imie"/><br>
+Nazwisko:                   <input type="text" name="nazwisko"/><br>
 Krotki opis:                <textarea name="opis"></textarea><br>
 <hr>
 <div class="edit member">
 <b>Edytuj czlonka kola</b><br>
-ID:                         <input type="text" name="id_edytuj_czlonka"><br>
-Zdjecie(max 1 MB):          <input type="file" name="zdjecie_edytuj"><br>
-Imie:                       <input type="text" name="imie_edytuj"><br>
-Nazwisko:                   <input type="text" name="nazwisko_edytuj"><br>
+ID:                         <input class = "id" type="text" name="id_edytuj_czlonka"/><br>
+Zdjecie(max 1 MB):          <input type="file" name="zdjecie_edytuj"/><br>
+Imie:                       <input type="text" name="imie_edytuj"/><br>
+Nazwisko:                   <input type="text" name="nazwisko_edytuj"/><br>
 Krotki opis:                <textarea name="opis_edytuj"></textarea><br>
 <hr>
 </div>
 <div class="delete member">
 <b>Usun czlonka kola</b><br>
-ID czlonka do usuniecia:  <input type="text" name="id_usun_czlonka"><br>
+ID czlonka do usuniecia:  <input class = "id" type="text" name="id_usun_czlonka"/><br>
 UWAGA! Nie ma potwierdzenia i backupu, wiec trzeba uwazac!
 <hr>
 </div>
 <b>Dodaj wyjazd</b><br>
-Cel:                        <input type="text" name="cel"><br>
-Data(forma: dd-mm-rrrr):    <input type="text" name="data"><br>
+Cel:                        <input type="text" name="cel"/><br>
+Data(forma: dd-mm-rrrr):    <input type="text" name="data"/><br>
 <hr>
 <div class="edit wyjazd">
 <b>Edytuj wyjazd</b><br>
-ID:                         <input type="text" name="id_edytuj_wyjazd"><br>
-Cel:                        <input type="text" name="cel_edytuj"><br>
-Data(forma: rrrr-mm-dd):    <input type="text" name="data_edytuj"><br>
+ID:                         <input class = "id" type="text" name="id_edytuj_wyjazd"/><br>
+Cel:                        <input type="text" name="cel_edytuj"/><br>
+Data(forma: rrrr-mm-dd):    <input type="text" name="data_edytuj"/><br>
 <hr>
 </div>
 <div class="delete wyjazd">
 <b>Usun wyjazd</b><br>
-ID wyjazdu do usuniecia:  <input type="text" name="id_usun_wyjazd"><br>
+ID wyjazdu do usuniecia:    <input class = "id" type="text" name="id_usun_wyjazd"/><br>
 UWAGA! Nie ma potwierdzenia i backupu, wiec trzeba uwazac!
 <hr>
 </div>
 <b>Dodaj czlonkow do wyjazdu</b><br>
-ID wyjazdu:                 <input type="text" name="id_czlonkowie_wyjazd"><br>
-Czlonkowie(id, po przecinku)<input type="text" name="czlonkowie_wyjazd"><br>
+ID wyjazdu:                 <input type="text" name="id_czlonkowie_wyjazd"/><br>
+Czlonkowie(id, po przecinku)<input type="text" name="czlonkowie_wyjazd"/><br>
 <hr>
 <b>Dodaj galerie do wyjazdu</b><br>
-ID wyjazdu:                 <input type="text" name="id_galeria_wyjazd"><br>
-Zdjecia                     <input type="file" name="galeria_wyjazd[]" multiple="multiple"><br>
+ID wyjazdu:                 <input type="text" name="id_galeria_wyjazd"/><br>
+Zdjecia                     <input type="file" name="galeria_wyjazd[]" multiple="multiple"/><br>
 <hr>
 
-<?php echo(getDataByID('members', 'nazwisko', 1).'<br>'); ?>
+<?php //echo(getDataByID('members', 'nazwisko', 1).'<br>'); ?>
 
 <?php if($_SESSION['login']=='kampro512'){
-    echo 'Super user dla uzytkownika o ID <input type="text" name="id_super"><br>';
+    echo 'Super user dla uzytkownika o ID <input type="text" name="id_super"/><br>';
     echo '<hr>';
 }?>
 
