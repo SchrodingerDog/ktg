@@ -154,8 +154,15 @@ function superUser($id){
     // $pdo = new PDO('mysql:host=localhost;dbname=ktg', 'root', '');
     $zapytanie = $pdo->prepare('UPDATE  `members` SET  `super_user` = 1 WHERE id =?');
     $wynik = $zapytanie->execute(array($id));
-    echo 'Funkcja wykonana';
 }
+
+function getDataByID($table , $col, $id){
+    require 'dbConn.inc.php';
+    $zapytanie = $pdo->query('SELECT '.$col.' FROM  '.$table.' WHERE id = '.$id);
+    $wynik = $zapytanie->fetch()[0];
+    return $wynik;
+}
+
 ?>
 
 </html>
