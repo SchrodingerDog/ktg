@@ -100,6 +100,8 @@ if(!empty($_POST['id_super'])){
     superUser($id);
 }
 
+print_r(getDataByID('posts', '*', 1))
+
 ?>
 
 <form name = 'form' action = 'adminPanel.php' method="POST" enctype="multipart/form-data">

@@ -159,7 +159,7 @@ function superUser($id){
 function getDataByID($table , $col, $id){
     require 'dbConn.inc.php';
     $zapytanie = $pdo->query('SELECT '.$col.' FROM  '.$table.' WHERE id = '.$id);
-    $wynik = $zapytanie->fetch()[0];
+    $wynik = $zapytanie->fetchAll(PDO::FETCH_ASSOC);
     return $wynik;
 }
 
