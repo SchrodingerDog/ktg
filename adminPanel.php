@@ -157,7 +157,7 @@ Data(forma: rrrr-mm-dd):    <input type="text" name="data_edytuj"/><br>
 </div>
 <div class="delete wyjazd">
 <b>Usun wyjazd</b><br>
-ID wyjazdu do usuniecia:    <input class = "id" type="text" name="id_usun_wyjazd"/><br>
+ID wyjazdu do usuniecia:     <input class = "id" type="text" name="id_usun_wyjazd"/><br>
 UWAGA! Nie ma potwierdzenia i backupu, wiec trzeba uwazac!
 <hr>
 </div>
