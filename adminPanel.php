@@ -114,9 +114,9 @@ Tresc postu:                <textarea name="tresc"></textarea><br>
 <b>Edytuj post</b><br>
 ID postu do edycji:         <input class = "id" type="text" name="id_edycja"/><br>
 Tytul postu: 
-                            <input type="text" name="tytul_edycja"/><br>
+                            <input type="text" class = 'tytul' name="tytul_edycja"/><br>
 Tresc postu : 
-                            <textarea name="tresc_edycja"></textarea><br>
+                            <textarea class = 'tresc' name="tresc_edycja"></textarea><br>
 <hr>
 </div>
 <div class="delete post">

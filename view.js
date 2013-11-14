@@ -23,16 +23,27 @@ $('input.id').on('keyup change', function(){
 			var type = 'edit';
 			if(subClass[1]=='post'){
 				$.post('ajax.php', {ajax_id:id, ajax_table:'posts'}, function(data){
-					console.log('asdf');
-					console.log(data['tytul']);
+					var start = data.indexOf('[');
+					var end = data.lastIndexOf(']');
+					if (end-start!=1) {
+						var json = data.substring(start+1, end);
+						var retData = jQuery.parseJSON(json);
+						var tytul = retData.tytul;
+						$('.edit').find('.tytul').val(tytul);
+						var tresc = retData.tresc;
+						$('.edit').find('.tresc').val(tresc);
+					}else{
+						$('.edit').find('.tytul').val('');
+						$('.edit').find('.tresc').val('');
+					};
 				}).always(function(){
-					console.log(id);
+
 				});
 			}else if (subClass[1]=='member'){
 				$.post('ajax.php', {ajax_id:id, ajax_table:'members'}, function(data){
-					console.log('asdf');
+
 				}).always(function(){
-					console.log('asdf');
+					
 				});
 			}else if (subClass[1]=='wyjazd'){
 				$.post('ajax.php', {ajax_id:id, ajax_table:'wyprawy'}, function(data){
@@ -45,8 +56,19 @@ $('input.id').on('keyup change', function(){
 			var type = 'delete';
 			if(subClass[1]=='post'){
 				$.post('ajax.php', {ajax_id:id, ajax_table:'posts'}, function(data){
-					console.log('asdf');
-					console.log(data['tytul']);
+					var start = data.indexOf('[');
+					var end = data.lastIndexOf(']');
+					if (end-start!=1) {
+						var json = data.substring(start+1, end);
+						var retData = jQuery.parseJSON(json);
+						var tytul = retData.tytul;
+						var tresc = retData.tresc;
+						$('.view').remove();
+						$('<div class="view"></div>').css('display', 'block').css('margin', '15px').css('border', '1px solid black').insertAfter(clicked);
+						$('.view').html(tytul+'<br>'+tresc);
+					}else{
+						$('.view').remove();
+					};
 				}).always(function(){
 					console.log(id);
 				});
