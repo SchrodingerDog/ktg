@@ -21,6 +21,12 @@ thead{
 	background-color: #ecff5c;
 }*/
 
+.view{
+	display: block;
+	border: 1px solid black;
+	max-width: 300px;
+}
+
 .bg{
     background: url(member_photos/lbpvXmZ.jpg) no-repeat center center fixed; 
     min-width: 100%;
