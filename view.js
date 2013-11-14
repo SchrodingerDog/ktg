@@ -149,18 +149,14 @@ $('input.id').on('keyup change', function(){
 			}
 		};
 });
-(function( $ ){
-	$.fn.confirmDelete = function(event) {
-		if ($(this).val()!='') {
-		  	var didConfirm = confirm("Czy na pewno chcesz usunac?");
-		  	if (didConfirm != true) {
-		  		event.preventDefault();
-		  	}
-	  	};
-  	};
-})( jQuery );
 $('form').submit(function() {
-	$('.delete').find('id').confirmDelete(event);
+	if($('.delete').find('.id').val()!=''){
+		
+		var didConfirm = confirm("Czy na pewno chcesz usunac?");
+		if (didConfirm != true) {
+			event.preventDefault();
+		}
+	}
 });
 // val changed->
 //post val->
