@@ -1,3 +1,4 @@
+<?php require 'config.inc.php'; ?>d
 <!DOCTYPE html>
 <html lang="en">
   <head>
