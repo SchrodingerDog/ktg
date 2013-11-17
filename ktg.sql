@@ -3,9 +3,9 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Czas wygenerowania: 15 Lis 2013, 23:30
--- Wersja serwera: 5.5.32
--- Wersja PHP: 5.4.19
+-- Czas wygenerowania: 18 Lis 2013, 00:01
+-- Wersja serwera: 5.6.11
+-- Wersja PHP: 5.5.3
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -83,7 +83,7 @@ INSERT INTO `members` (`id`, `zdjecie`, `imie`, `nazwisko`, `opis`, `super_user`
 (14, 'member_photos/seb_kol.jpg', 'Sebastian', 'Kołosowski', 'Brak opisu', 0, 'sebko', 'member_photos/thumbs/seb_kol.jpg'),
 (15, 'member_photos/bar_pla.jpg', 'Bartosz', 'Płaneta', 'Brak opisu', 0, 'barpł78', 'member_photos/thumbs/bar_pla.jpg'),
 (16, 'member_photos/tom_zal.jpg', 'Tomasz', 'Załupski', 'Brak opisu', 0, 'tomza', 'member_photos/thumbs/tom_zal.jpg'),
-(17, 'member_photos/kam_pro.jpg', 'Kamil', 'Prościewicz', 'Kreator strony', 0, 'kampro512', 'member_photos/thumbs/kam_pro.jpg');
+(17, 'member_photos/kam_pro.jpg', 'Kamil', 'Prościewicz', 'Kreator strony', 1, 'kampro512', 'member_photos/thumbs/kam_pro.jpg');
 
 -- --------------------------------------------------------
 
@@ -98,14 +98,14 @@ CREATE TABLE IF NOT EXISTS `posts` (
   `tresc` text COLLATE utf8_unicode_ci NOT NULL,
   `created` date NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=5 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=10 ;
 
 --
 -- Zrzut danych tabeli `posts`
 --
 
 INSERT INTO `posts` (`id`, `tytul`, `tresc`, `created`) VALUES
-(1, 'Koło Turystyki Górskiej', 'Od października 2011 w naszej szkole wznowiło działalność Koło Turystyki Górskiej, skupiające osoby „pozytywnie zakręcone” górami: nauczycieli, uczniów, absolwentów. W dniach 20 – 21 listopada wyruszyliśmy 11-osobową grupą na pierwszą wycieczkę w Gorce. Zdjęcia z wyprawy można obejrzeć w Multimedialnej Kronice Szkolnej pod adresem <a href="http://kronika.zse.edu.pl">http://kronika.zse.edu.pl</a>  Niebawem kolejny, tym razem zimowy wyjazd, na Halę Krupową (Beskid Żywiecki, pasmo Policy). Odbędzie się w dniach 12-13 marca 2012. W programie między innymi wejście na Halę, następnie na rakietach śnieżnych na szczyt Okrąglicy 1239 m n.p.m , jak zwykle ognisko z pieczeniem kiełbasek, przejście bardzo widokowej trasy z Sidziny na Halę Krupową. Zapraszamy do wspólnych górskich wypadów z dużą dawką adrenaliny i przygody. Informacje i kontakt: mgr D. Tyralik (sala 131)<a href="mailto:dor_ty@interia.pl">dor_ty@interia.pl</a>', '2013-11-15'),
+(1, 'Koło Turystyki Górskiej', 'Od października 2011 w naszej szkole wznowiło działalność Koło Turystyki Górskiej, skupiające osoby „pozytywnie zakręcone” górami: nauczycieli, uczniów, absolwentów. W dniach 20 – 21 listopada wyruszyliśmy 11-osobową grupą na pierwszą wycieczkę w Gorce. Zdjęcia z wyprawy można obejrzeć w Multimedialnej Kronice Szkolnej pod adresem <a href="http://kronika.zse.edu.pl">kronika.zse.edu.pl</a>  Niebawem kolejny, tym razem zimowy wyjazd, na Halę Krupową (Beskid Żywiecki, pasmo Policy). Odbędzie się w dniach 12-13 marca 2012. W programie między innymi wejście na Halę, następnie na rakietach śnieżnych na szczyt Okrąglicy 1239 m n.p.m , jak zwykle ognisko z pieczeniem kiełbasek, przejście bardzo widokowej trasy z Sidziny na Halę Krupową. Zapraszamy do wspólnych górskich wypadów z dużą dawką adrenaliny i przygody. Informacje i kontakt: mgr D. Tyralik (sala 131) albo mail: <a href="mailto:dor_ty@interia.pl">dor_ty@interia.pl</a>', '2013-11-15'),
 (2, 'Spotkanie KTG', 'W piątek 14.09 na przerwie o godz. 11.00 w sali 131 (pracownia geograficzna) odbędzie się spotkanie członków Koła Turystyki Górskiej. Na zebranie organizacyjne zapraszamy również wszystkie osoby chcące wstąpić do Koła. Niebawem kolejna wyprawa "Tatry Zachodnie - dogrywka".', '2013-11-15'),
 (3, 'Wróciliśmy z Czerwonych!', 'W dniach 3 - 5 października Koło Turystyki Górskiej zrealizowało kolejną wycieczkę. Zgodnie z planem zdobyliśmy cztery ponad 2-tysięczniki, czyli Czerwone Wierchy: Ciemniak (2096 m n.p.m.), Krzesanica (2122 m n.p.m.), Małołączniak (2096 m n.p.m.), Kopa Kondracka (2005 m n.p.m.). Tego samego dnia, weszliśmy również na Giewont (1894 m n.p.m.). Wieczorem nocleg w najmniejszym tatrzańskim schronisku - na Hali Kondratowej. Trzeci dzień to wędrówka pięknym graniowym szlakiem na Kasprowy Wierch (1987 m n.p.m.), a potem do schroniska Murowaniec na hali Gąsienicowej. ', '2013-11-15'),
 (4, 'Spotkanie z okazji Światowego Dnia Turystyki', 'W dniu 12 listopada o godzinie 13.30 w sali audiowiualnej, odbędzie się w ramach obchodów minionego, Światowego Dnia Turystyki, spotkanie członków naszego Koła oraz wszystkich chętnych, z naszym Gościem - miłośnikiem gór, który opowie o swoich podróżach do Indii i Nepalu, prezentując jednocześnie materiał fotograficzny. Udział w slajdowisku jest bezpłatny. Serdecznie zapraszamy :)', '2013-11-15');
