@@ -15,7 +15,7 @@ require 'config.inc.php';
 
     <!-- Bootstrap core CSS -->
     <link href="bootstrap/dist/css/bootstrap.css" rel="stylesheet">
-
+    <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css" />
     <!-- Custom style -->
     <link href="style.css" rel="stylesheet">
 
@@ -27,6 +27,16 @@ require 'config.inc.php';
   </head>
   <body>
     <div class = "bg" style="display:none"></div>
+    <div id="dialog-form" title="Edytuj post" style="display:none">	 
+	  <form>
+	  <fieldset>
+	    <label for="name">Tytul</label>
+	    <textarea type="text" class="tytul" cols="80" rows="1"></textarea><br>
+	    <label for="email">Tresc</label>
+	    <textarea type="text" class="tresc" cols="80" rows="15"> </textarea>
+	  </fieldset>
+	  </form>
+	</div>
     <div class="container">
       
     <?php require 'header.php'; ?>
@@ -161,7 +171,7 @@ require 'config.inc.php';
 		$licznik = 0;
 		foreach($posts->fetchAll() as $row){
 				
-	            echo '<div id = "row">';
+	            echo '<div id = "row" row = "'.$row['id'].'">';
 	            if ($licznik%2==1) {
 	              echo '<div class="col-md-6">';
 	            }else{
@@ -176,7 +186,8 @@ require 'config.inc.php';
 	            echo  '</div>';
 	            echo  '<div class="panel-footer">';
 	            if (isset($_SESSION['login'])) {
-	                echo $row['id'].' (ID potrzebne do usuwania i edycji)';
+	                echo '<button type="button" style="margin-right:15px" onclick="removePost('.$row['id'].')" class="btn btn-info">Usuń</button>';
+	                echo '<button type="button" style="margin-right:15px" onclick="editPost('.$row['id'].')" class="btn btn-info">Edytuj</button>';
 	            }
 	            echo    '<div class = "created"><i>'.$row['created'].'</i></div>';
 	            echo  '</div>';//footer
@@ -193,7 +204,9 @@ require 'config.inc.php';
     <?php require 'footer.php'; ?>
     <script language="JavaScript" type="text/javascript" src="bootstrap/assets/js/jquery.js"></script>
     <script language="JavaScript" type="text/javascript" src="bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
     <script language="JavaScript" type="text/javascript" src="background.js"></script>
+    <script language="JavaScript" type="text/javascript" src="ajaxController.js"></script>
     
   </body>
 </html>
