@@ -15,7 +15,7 @@ require 'config.inc.php';
 
     <!-- Bootstrap core CSS -->
     <link href="bootstrap/dist/css/bootstrap.css" rel="stylesheet">
-    <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css" />
+    <link rel="stylesheet" href="bootstrap/assets/js/jquery-ui-1.10.3/jquery-ui-1.10.3/themes/base/jquery-ui.css" />
     <!-- Custom style -->
     <link href="style.css" rel="stylesheet">
 
@@ -204,7 +204,7 @@ require 'config.inc.php';
     <?php require 'footer.php'; ?>
     <script language="JavaScript" type="text/javascript" src="bootstrap/assets/js/jquery.js"></script>
     <script language="JavaScript" type="text/javascript" src="bootstrap/dist/js/bootstrap.min.js"></script>
-    <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
+    <script src="bootstrap/assets/js/jquery-ui-1.10.3/jquery-ui-1.10.3/ui/jquery-ui.js"></script>
     <script language="JavaScript" type="text/javascript" src="background.js"></script>
     <script language="JavaScript" type="text/javascript" src="ajaxController.js"></script>
     
