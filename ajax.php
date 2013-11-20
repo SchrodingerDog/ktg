@@ -21,4 +21,14 @@ if(!empty($_POST['ajax_ed_id']) and !empty($_POST['ajax_ed_tytul']) and !empty($
     $tresc = $_POST['ajax_ed_tresc'];
     edytujPost($id,$tytul,$tresc);
 }
+if (!empty($_POST['ajax_order'])) {
+    require 'dbConn.inc.php';
+    $order = $_POST['ajax_order'];
+    foreach ($order as $key => $value) {
+        $key = intval( $key ) + 1;
+        $query=$pdo->prepare('UPDATE `members` SET `ord` = ? WHERE id = ?');
+        $query->execute(array($key, $value));
+    }
+}
+
 ?>

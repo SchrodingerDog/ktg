@@ -30,11 +30,11 @@ require 'config.inc.php';
        
 
       // $pdo = new PDO('mysql:host=localhost;dbname=ktg', 'root', '');
-      $members = $pdo->query('SELECT * FROM members ORDER BY id');
+      $members = $pdo->query('SELECT * FROM members ORDER BY ord');
 
       if(!is_null($members)){
         foreach($members->fetchAll() as $row){
-          echo '<div class="row" id = "row_'.$row['id'].'">';
+          echo '<div class="row" id = "'.$row['id'].'">';
             echo '<div class="col-md-4">';
               echo '<img class ="media-object" src = "'.$row['thumb'].'">';
             echo '</div>';
@@ -62,17 +62,10 @@ require 'config.inc.php';
     <script language="JavaScript" type="text/javascript" src="bootstrap/dist/js/bootstrap.min.js"></script>
     <script src="bootstrap/assets/js/jquery-ui-1.10.3/jquery-ui-1.10.3/ui/jquery-ui.js"></script>
     <script language="JavaScript" type="text/javascript" src="background.js"></script>
-    <script type="text/javascript">
-    $('.wrapper').sortable({
-      axis:'y',
-      out:function(event,ui){
-        order = [];
-        $('.wrapper').children('.row').each(function(idx, elm) {
-          order.push(elm.id.split('_')[1])
-        });
-        //ajaxa tutaj, potem odkodowanie, zamiana id'ków w bazie, może nawet kombinacja z id przy etykiecie
-      }
-    });
-    </script>
+    <?php
+    if(isset($_SESSION['login'])){
+      echo '<script type="text/javascript" src="sort.js"></script>';
+    }
+    ?>
   </body>
 </html>
