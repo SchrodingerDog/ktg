@@ -69,24 +69,30 @@ function dodajCzlonka($zdjecie, $imie, $nazwisko, $opis){
 
 function edytujCzlonka($id, $zdjecie, $imie, $nazwisko, $opis){
     require 'dbConn.inc.php';
-    if(is_uploaded_file($zdjecie['tmp_name'])){
-        if ($zdjecie['size']>(1024*1024)) {
-           die("Plik jest za duży");
-        }
-        move_uploaded_file($zdjecie['tmp_name'], 'member_photos/'.$zdjecie['name']);
-
-        file_get_contents('http://' . $_SERVER['HTTP_HOST'] . dirname($_SERVER['SCRIPT_NAME']) . '/generate.php?image='.$zdjecie['name'].'&dir=member_photos&m=120');
-        $thumb_dir = 'member_photos/thumbs/'.$zdjecie['name'];
-        $file_dir = 'member_photos/'.$zdjecie['name'];
+    if($zdjecie === ''){
+        $login = strtolower(substr($imie, 0,3)).strtolower(substr($nazwisko, 0,3)).strlen($imie).strlen($nazwisko);
+        $zapytanie = $pdo->prepare('UPDATE `members` SET `imie` = ?, `nazwisko` = ?, `opis` = ?, `login` = ? WHERE id=?');    
+        $zapytanie->execute(array($imie, $nazwisko, $opis, $login, $id)); 
     }else{
-        $thumb_dir = 'member_photos/blank_user.gif';
-        $file_dir = 'member_photos/blank_user.gif';
-    }
-    
-    $login = strtolower(substr($imie, 0,3)).strtolower(substr($nazwisko, 0,3)).strlen($imie).strlen($nazwisko);
+        if(@is_uploaded_file($zdjecie['tmp_name'])){
+            if ($zdjecie['size']>(1024*1024)) {
+               die("Plik jest za duży");
+            }
+            move_uploaded_file($zdjecie['tmp_name'], 'member_photos/'.$zdjecie['name']);
 
-    $zapytanie = $pdo->prepare('UPDATE `members` SET `zdjecie`=?, `thumb` = ?, `imie` = ?, `nazwisko` = ?, `opis` = ?, `login` = ? WHERE id=?');    
-    $zapytanie->execute(array($file_dir,$thumb_dir,$imie, $nazwisko, $opis, $login, $id)); 
+            file_get_contents('http://' . $_SERVER['HTTP_HOST'] . dirname($_SERVER['SCRIPT_NAME']) . '/generate.php?image='.$zdjecie['name'].'&dir=member_photos&m=120');
+            $thumb_dir = 'member_photos/thumbs/'.$zdjecie['name'];
+            $file_dir = 'member_photos/'.$zdjecie['name'];
+        }else{
+            $thumb_dir = 'member_photos/blank_user.gif';
+            $file_dir = 'member_photos/blank_user.gif';
+        }
+    
+        $login = strtolower(substr($imie, 0,3)).strtolower(substr($nazwisko, 0,3)).strlen($imie).strlen($nazwisko);
+
+        $zapytanie = $pdo->prepare('UPDATE `members` SET `zdjecie`=?, `thumb` = ?, `imie` = ?, `nazwisko` = ?, `opis` = ?, `login` = ? WHERE id=?');    
+        $zapytanie->execute(array($file_dir,$thumb_dir,$imie, $nazwisko, $opis, $login, $id)); 
+    }
 }
 
 function usunCzlonka($id){

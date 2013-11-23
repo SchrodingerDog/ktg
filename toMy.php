@@ -25,6 +25,19 @@ require 'config.inc.php';
     
     <div class="container">
       <?php require 'header.php'; ?>
+      <div id="dialog-form" title="Edytuj post" style="display:none">  
+        <form>
+        <fieldset>
+          <label for="imie">Imie</label>
+          <input type="text" class="imie" pole = "1"><br>
+          <label for="nazwisko">Nazwisko</label>
+          <input type="text" class="nazwisko" pole = "1"><br>
+          <label for="nazwisko">Opis</label>
+          <textarea type="text" class="opis" pole = "1"></textarea><br>
+          Zdjecia nie da się tu edytować, trzeba wejśc w panel admina
+        </fieldset>
+        </form>
+      </div>
       <div class="wrapper">
       <?php
        
@@ -40,15 +53,20 @@ require 'config.inc.php';
             echo '</div>';
             echo '<div class="panel col-md-3">';
             echo '<div class="panel-title">';
-              if(isset($_SESSION['login'])){
-                echo '#'.$row['id'].' ';
-              }
+              
               echo $row['nazwisko'].' '.$row['imie'].'<br>';
             echo '</div>';
               echo '<div class="panel-body">';
                 echo $row['opis'].'<br>';
               echo '</div>'; 
-            echo '</div>';
+
+            echo '</div>'; 
+            if(isset($_SESSION['login'])){
+              echo '<div class="przyciski col-md-3" style = "display:none">';
+              echo '<button type="button" style="margin-right:15px" onclick="removeMember('.$row['id'].')" class="btn btn-info">Usuń</button>';
+              echo '<button type="button" style="margin-right:15px" onclick="editMember('.$row['id'].')" class="btn btn-info">Edytuj</button>';
+              echo '</div>';
+            }
           echo '</div>';
         }
       }
@@ -65,6 +83,7 @@ require 'config.inc.php';
     <?php
     if(isset($_SESSION['login'])){
       echo '<script type="text/javascript" src="sort.js"></script>';
+      echo '<script type="text/javascript" src="hover.js"></script>';
     }
     ?>
   </body>

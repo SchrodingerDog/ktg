@@ -4,7 +4,7 @@ function removePost (id) {
 	var clicked = $('.container').find('div#row[row='+id+']');
 	var didConfirm = confirm("Czy na pewno chcesz usunac?");
 		if (didConfirm == true) {
-			$.post('ajax.php', {ajax_rm_id:id}, function(data){
+			$.post('ajax.php', {ajax_rm_p_id:id}, function(data){
 				var curr=$('.container').find('div#row[row='+(id)+']');
 				do{
 					var now =  curr;
@@ -52,7 +52,7 @@ $( "#dialog-form" ).dialog({
         "Akceptuj zmiany post": function() {
           var tytul = $(this).find('.tytul').val();
           var tresc = $(this).find('.tresc').val();
-          $.post('ajax.php', {ajax_ed_id:globalID, ajax_ed_tytul:tytul, ajax_ed_tresc:tresc}, function(data){
+          $.post('ajax.php', {ajax_ed_p_id:globalID, ajax_ed_p_tytul:tytul, ajax_ed_p_tresc:tresc}, function(data){
           	$('.container').find('div#row[row='+globalID+']').find('div').find('div.panel').find('div').find('h3').html(tytul);
           	$('.container').find('div#row[row='+globalID+']').find('div').find('div.panel').find('div.panel-body').html(tresc);
 		  });
