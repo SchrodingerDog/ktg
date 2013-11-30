@@ -44,7 +44,7 @@ require 'config.inc.php';
       <tbody>
       <?php
       // $pdo = new PDO('mysql:host=localhost;dbname=ktg', 'root', '');
-      $wyjazdy = $pdo->query('SELECT * FROM wyprawy');
+      $wyjazdy = $pdo->query('SELECT * FROM wyprawy ORDER BY data DESC');
       
       $memb = array();
 
