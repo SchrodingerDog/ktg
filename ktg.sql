@@ -3,9 +3,9 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Czas wygenerowania: 18 Lis 2013, 00:01
--- Wersja serwera: 5.6.11
--- Wersja PHP: 5.5.3
+-- Czas wygenerowania: 11 Mar 2014, 20:11
+-- Wersja serwera: 5.5.32
+-- Wersja PHP: 5.4.19
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -19,7 +19,7 @@ SET time_zone = "+00:00";
 --
 -- Baza danych: `ktg`
 --
-CREATE DATABASE IF NOT EXISTS `ktg` DEFAULT CHARACTER SET utf8 COLLATE utf8_unicode_ci;
+CREATE DATABASE IF NOT EXISTS `ktg` DEFAULT CHARACTER SET utf8 COLLATE utf8_polish_ci;
 USE `ktg`;
 
 -- --------------------------------------------------------
@@ -33,15 +33,24 @@ CREATE TABLE IF NOT EXISTS `galeries` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `ilosc_zdj` int(11) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=7 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=12 ;
 
 --
 -- Zrzut danych tabeli `galeries`
 --
 
 INSERT INTO `galeries` (`id`, `ilosc_zdj`) VALUES
-(1, 45),
-(6, 20);
+(1, 20),
+(2, 10),
+(3, 9),
+(4, 20),
+(5, 11),
+(6, 7),
+(7, 8),
+(8, 4),
+(9, 17),
+(10, 30),
+(11, 81);
 
 -- --------------------------------------------------------
 
@@ -59,6 +68,7 @@ CREATE TABLE IF NOT EXISTS `members` (
   `super_user` tinyint(1) NOT NULL,
   `login` text COLLATE utf8_unicode_ci NOT NULL,
   `thumb` text COLLATE utf8_unicode_ci NOT NULL,
+  `ord` int(11) NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=18 ;
 
@@ -66,24 +76,24 @@ CREATE TABLE IF NOT EXISTS `members` (
 -- Zrzut danych tabeli `members`
 --
 
-INSERT INTO `members` (`id`, `zdjecie`, `imie`, `nazwisko`, `opis`, `super_user`, `login`, `thumb`) VALUES
-(1, 'member_photos/dor_tyr.jpg', 'Dorota', 'Tyralik', 'Opiekunka koła', 0, 'dortyr67', 'member_photos/thumbs/dor_tyr.jpg'),
-(2, 'member_photos/luk_zal.jpg', 'Łukasz', 'Załucki', 'Drugi opiekun koła', 0, 'Łuza', 'member_photos/thumbs/luk_zal.jpg'),
-(3, 'member_photos/seb_fij.jpg', 'Sebastian', 'Fijak', 'Przewodnik', 0, 'sebfij95', 'member_photos/thumbs/seb_fij.jpg'),
-(4, 'member_photos/mac_flo.jpg', 'Maciej', 'Florys', 'Przewodnik', 0, 'macflo66', 'member_photos/thumbs/mac_flo.jpg'),
-(5, 'member_photos/joa_sta.jpg', 'Joanna', 'Stasielak', 'Przewodniczka', 0, 'joasta69', 'member_photos/thumbs/joa_sta.jpg'),
-(6, 'member_photos/dam_per.jpg', 'Damian', 'Peruń', 'Brak opisu', 0, 'damper66', 'member_photos/thumbs/dam_per.jpg'),
-(7, 'member_photos/paw_dud.jpg', 'Paweł', 'Dudek', 'Brak opisu', 0, 'pawdud65', 'member_photos/thumbs/paw_dud.jpg'),
-(8, 'member_photos/mat_cie.jpg', 'Mateusz', 'Cieśla', 'Brak opisu', 0, 'matcie77', 'member_photos/thumbs/mat_cie.jpg'),
-(9, 'member_photos/pat_ges.jpg', 'Patryk', 'Gęsikowski', 'Brak opisu', 0, 'patgę611', 'member_photos/thumbs/pat_ges.jpg'),
-(10, 'member_photos/agn_rej.jpg', 'Agnieszka', 'Rejdak', 'Brak opisu', 0, 'agnrej96', 'member_photos/thumbs/agn_rej.jpg'),
-(11, 'member_photos/grz_mis.jpg', 'Grzegorz', 'Miszczyk', 'Brak opisu', 0, 'grzmis88', 'member_photos/thumbs/grz_mis.jpg'),
-(12, 'member_photos/joa_pie.jpg', 'Joanna', 'Piekarska', 'Brak opisu', 0, 'joapie69', 'member_photos/thumbs/joa_pie.jpg'),
-(13, 'member_photos/mar_pie.jpg', 'Martyna', 'Pietraszek', 'Brak opisu', 0, 'marpie710', 'member_photos/thumbs/mar_pie.jpg'),
-(14, 'member_photos/seb_kol.jpg', 'Sebastian', 'Kołosowski', 'Brak opisu', 0, 'sebko', 'member_photos/thumbs/seb_kol.jpg'),
-(15, 'member_photos/bar_pla.jpg', 'Bartosz', 'Płaneta', 'Brak opisu', 0, 'barpł78', 'member_photos/thumbs/bar_pla.jpg'),
-(16, 'member_photos/tom_zal.jpg', 'Tomasz', 'Załupski', 'Brak opisu', 0, 'tomza', 'member_photos/thumbs/tom_zal.jpg'),
-(17, 'member_photos/kam_pro.jpg', 'Kamil', 'Prościewicz', 'Kreator strony', 1, 'kampro512', 'member_photos/thumbs/kam_pro.jpg');
+INSERT INTO `members` (`id`, `zdjecie`, `imie`, `nazwisko`, `opis`, `super_user`, `login`, `thumb`, `ord`) VALUES
+(1, 'member_photos/dor_tyr.jpg', 'Dorota', 'Tyralik', 'Opiekunka koła', 0, 'dortyr67', 'member_photos/thumbs/dor_tyr.jpg', 1),
+(2, 'member_photos/luk_zal.jpg', 'Łukasz', 'Załucki', 'Drugi opiekun koła', 0, 'Łuza', 'member_photos/thumbs/luk_zal.jpg', 3),
+(3, 'member_photos/seb_fij.jpg', 'Sebastian', 'Fijak', 'Przewodnik', 0, 'sebfij95', 'member_photos/thumbs/seb_fij.jpg', 4),
+(4, 'member_photos/mac_flo.jpg', 'Maciej', 'Florys', 'Przewodnik', 0, 'macflo66', 'member_photos/thumbs/mac_flo.jpg', 5),
+(5, 'member_photos/joa_sta.jpg', 'Joanna', 'Stasielak', 'Przewodniczka', 0, 'joasta69', 'member_photos/thumbs/joa_sta.jpg', 6),
+(6, 'member_photos/dam_per.jpg', 'Damian', 'Peruń', 'Brak opisu', 0, 'damper66', 'member_photos/thumbs/dam_per.jpg', 7),
+(7, 'member_photos/paw_dud.jpg', 'Paweł', 'Dudek', 'Brak opisu', 0, 'pawdud65', 'member_photos/thumbs/paw_dud.jpg', 8),
+(8, 'member_photos/mat_cie.jpg', 'Mateusz', 'Cieśla', 'Brak opisu', 0, 'matcie77', 'member_photos/thumbs/mat_cie.jpg', 9),
+(9, 'member_photos/pat_ges.jpg', 'Patryk', 'Gęsikowski', 'Brak opisu', 0, 'patgę611', 'member_photos/thumbs/pat_ges.jpg', 10),
+(10, 'member_photos/agn_rej.jpg', 'Agnieszka', 'Rejdak', 'Brak opisu', 0, 'agnrej96', 'member_photos/thumbs/agn_rej.jpg', 11),
+(11, 'member_photos/grz_mis.jpg', 'Grzegorz', 'Miszczyk', 'Brak opisu', 0, 'grzmis88', 'member_photos/thumbs/grz_mis.jpg', 12),
+(12, 'member_photos/joa_pie.jpg', 'Joanna', 'Piekarska', 'Brak opisu', 0, 'joapie69', 'member_photos/thumbs/joa_pie.jpg', 13),
+(13, 'member_photos/mar_pie.jpg', 'Martyna', 'Pietraszek', 'Brak opisu', 0, 'marpie710', 'member_photos/thumbs/mar_pie.jpg', 14),
+(14, 'member_photos/seb_kol.jpg', 'Sebastian', 'Kołosowski', 'Brak opisu', 0, 'sebko', 'member_photos/thumbs/seb_kol.jpg', 15),
+(15, 'member_photos/bar_pla.jpg', 'Bartosz', 'Płaneta', 'Brak opisu', 0, 'barpł78', 'member_photos/thumbs/bar_pla.jpg', 16),
+(16, 'member_photos/tom_zal.jpg', 'Tomasz', 'Załupski', 'Brak opisu', 0, 'tomza', 'member_photos/thumbs/tom_zal.jpg', 17),
+(17, 'member_photos/kam_pro.jpg', 'Kamil', 'Prościewicz', 'Kreator strony', 1, 'kampro512', 'member_photos/thumbs/kam_pro.jpg', 18);
 
 -- --------------------------------------------------------
 
@@ -98,7 +108,7 @@ CREATE TABLE IF NOT EXISTS `posts` (
   `tresc` text COLLATE utf8_unicode_ci NOT NULL,
   `created` date NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=10 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=5 ;
 
 --
 -- Zrzut danych tabeli `posts`
@@ -122,18 +132,24 @@ CREATE TABLE IF NOT EXISTS `wyprawy` (
   `cel` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
   `data` date NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=7 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=12 ;
 
 --
 -- Zrzut danych tabeli `wyprawy`
 --
 
 INSERT INTO `wyprawy` (`id`, `cel`, `data`) VALUES
-(1, 'Wałbrzych', '2013-10-31'),
-(2, 'Kraków', '2013-10-31'),
-(3, 'Będzin', '2013-10-31'),
-(4, 'Nibylandia', '2013-10-31'),
-(6, 'Konin', '2011-01-01');
+(1, 'Lackowa', '2005-06-26'),
+(2, 'Radziejowa', '2005-11-05'),
+(3, 'Skrzyczne', '2006-04-02'),
+(4, 'Turbacz', '2012-02-14'),
+(5, 'Rajd PTTK Rysianka', '2007-10-05'),
+(6, 'Pilsko', '2006-11-21'),
+(7, 'Góry Stołowe i Kotlina Kłodzka', '2007-04-29'),
+(8, 'Beskid Żywiecki', '2013-04-16'),
+(9, 'Bieszczady', '2006-06-17'),
+(10, 'Tatry', '2012-09-12'),
+(11, 'Tatry powtórka', '2012-10-21');
 
 -- --------------------------------------------------------
 
@@ -147,27 +163,6 @@ CREATE TABLE IF NOT EXISTS `wyprawy_czlonkowie` (
   `czlonek_id` int(11) NOT NULL,
   KEY `wyprawa_id` (`wyprawa_id`,`czlonek_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
-
---
--- Zrzut danych tabeli `wyprawy_czlonkowie`
---
-
-INSERT INTO `wyprawy_czlonkowie` (`wyprawa_id`, `czlonek_id`) VALUES
-(1, 1),
-(1, 2),
-(1, 3),
-(1, 4),
-(2, 1),
-(2, 4),
-(3, 2),
-(3, 3),
-(4, 1),
-(4, 5),
-(4, 6),
-(6, 2),
-(6, 3),
-(6, 5),
-(6, 6);
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

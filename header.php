@@ -34,7 +34,7 @@
       }
       ?>
       ><a href="wyjazdy.php">Wyjazdy</a></li>
-      <li class="dropdown">
+      <!-- <li class="dropdown">
         <a href="#" class="dropdown-toggle" data-toggle="dropdown">Galeria<b class="caret"></b></a>
         <ul class="dropdown-menu">
           <li><a href="#">Galeria1</a></li>
@@ -43,7 +43,7 @@
           <li><a href="#">Galeria4</a></li>
           <li><a href="#">Galeria5</a></li>
         </ul>
-      </li>
+      </li> -->
     </ul>
     <ul class="nav navbar-nav navbar-right">
     <?php if(isset($_SESSION['login'])){
