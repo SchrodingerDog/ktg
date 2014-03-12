@@ -6,8 +6,10 @@ require 'dbConn.inc.php';
 <!DOCTYPE html>
 <html lang="pl">
 <head>
-<meta charset="utf-8"
+<meta charset="utf-8">
 <link rel="stylesheet" type="text/css" href="style.css">
+<link rel="shortcut icon" href="favicon.gif">
+
 </head>
 </html>
 <?php
@@ -106,7 +108,13 @@ if(!empty($_POST['id_super'])){
     superUser($id);
 }
 
-print_r(getDataByID('wyprawy', '*', 1))
+if(!empty($_POST['folder'])){
+    $folder = $_POST['folder'];
+    
+    addMiniatures($folder);
+}
+
+//print_r(getDataByID('wyprawy', '*', 1))
 
 ?>
 
@@ -133,6 +141,12 @@ Czlonkowie(id, po przecinku)<input type="text" name="czlonkowie_wyjazd"/><br>
 <b>Dodaj galerie do wyjazdu</b><br>
 ID wyjazdu:                 <input type="text" name="id_galeria_wyjazd"/><br>
 Zdjecia                     <input type="file" name="galeria_wyjazd[]" multiple="multiple"/><br>
+
+<hr>
+<b>Dodaj miniatury w folderze</b><br>
+Folder:                 <input type="text" name="folder"/><br>
+
+
 <hr>
 <div class="edit post">
 <b>Edytuj post</b><br>

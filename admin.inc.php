@@ -17,6 +17,19 @@ function dodajPost($tytul, $tresc){
     $zapytanie->execute(array($tytul,$tresc));
 }
 
+function addMiniatures($folder)
+{
+    require 'dbConn.inc.php';
+    @mkdir($folder.'/thumbs/');
+    $ilosc = 0;
+    $zdjecia = scandir($folder);
+    foreach ($zdjecia as $i => $zdjecie) {
+        //move_uploaded_file($zdjecie, $folder.'/thumbs/');
+        file_get_contents('http://' . $_SERVER['HTTP_HOST'] . dirname($_SERVER['SCRIPT_NAME']) . '/generate.php?image='.$zdjecie.'&dir='.$folder.'/&m=120');
+            
+    }
+}
+
 function zamienSlashe(){
     require 'dbConn.inc.php';
 	// $pdo = new PDO('mysql:host=localhost;dbname=ktg', 'root', '');

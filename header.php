@@ -34,6 +34,13 @@
       }
       ?>
       ><a href="wyjazdy.php">Wyjazdy</a></li>
+      <li
+       <?php 
+      if(endsWith($_SERVER['SCRIPT_NAME'], 'galerie.php') || strpos($_SERVER['SCRIPT_NAME'], "galeria.php")){
+        echo 'class="active"';
+      }
+      ?>
+      ><a href="galerie.php">Galerie</a></li>
       <!-- <li class="dropdown">
         <a href="#" class="dropdown-toggle" data-toggle="dropdown">Galeria<b class="caret"></b></a>
         <ul class="dropdown-menu">

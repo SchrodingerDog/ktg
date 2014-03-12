@@ -9,7 +9,7 @@ require 'config.inc.php';
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
     <meta name="author" content="Kamil Prosciewicz">
-    <link rel="shortcut icon" href="bootstrap/assets/ico/favicon.png">
+    <link rel="shortcut icon" href="favicon.gif">
 
     <title>KTG\Wyjazdy</title>
 
@@ -32,7 +32,7 @@ require 'config.inc.php';
 
       <table class="table table-bordered">
       <thead>
-        <tr style="background-color: rgb(255, 60, 60)">
+        <tr style="background-color: #EEE">
           <?php if(isset($_SESSION['login'])){
             echo '<td>ID</td>';
           }
@@ -50,7 +50,7 @@ require 'config.inc.php';
 
         foreach($wyjazdy->fetchAll(PDO::FETCH_ASSOC) as $row){
           $memb = array();
-          echo '<tr style="background-color:#FFA22C">';
+          echo '<tr style="background-color:#FFF">';
             if(isset($_SESSION['login'])){
               echo '<td>'.$row['id'].'</td>';
             }
@@ -71,14 +71,14 @@ require 'config.inc.php';
               foreach($uczestnicy->fetchAll(PDO::FETCH_ASSOC) as $uczestnik){
                 array_push($memb, $uczestnik['imie'].' '.$uczestnik['nazwisko']);
               }
-              echo '<tr style="background-color:#ecff5c">';
+              echo '<tr style="background-color:#FFDBDB">';
                 if (empty($memb)) {
-                  echo '<td colspan=3>Jeszcze nie dodano</td>';
+                  echo '<td colspan=3>Jeszcze nie podpięto uczestników wyjazdu</td>';
                 }else{
                   echo '<td colspan=3>'.implode(', ', $memb).'</td>';
                 }
               echo '</tr>';
-              echo '<tr style="background-color:#ecff5c">';
+              echo '<tr style="background-color:#FFDBDB">';
                 echo '<td style="width:50%" align = "center"><a href="galeria.php?id='.$row['id'].'">Galeria</a></td>';
                 echo '<td style="width:50%" align = "center"><a href="sprawozdanie.php?id='.$row['id'].'">Sprawozdanie</a></td>';
               echo "</tr>";

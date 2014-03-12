@@ -17,14 +17,6 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8 */;
 
 --
--- Baza danych: `ktg`
---
-CREATE DATABASE IF NOT EXISTS `ktg` DEFAULT CHARACTER SET utf8 COLLATE utf8_polish_ci;
-USE `ktg`;
-
--- --------------------------------------------------------
-
---
 -- Struktura tabeli dla tabeli `galeries`
 --
 

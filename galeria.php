@@ -9,9 +9,9 @@ require'config.inc.php';
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
     <meta name="author" content="Kamil Prosciewicz">
-    <link rel="shortcut icon" href="bootstrap/assets/ico/favicon.png">
+    <link rel="shortcut icon" href="favicon.gif">
 
-    <title>Bootstrap_X0X0</title>
+    <title>KTG\Galeria</title>
 
     <!-- Bootstrap core CSS -->
     
